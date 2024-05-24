@@ -49,7 +49,14 @@ public class MazeGame implements GameInterface {
     }
 
     private void initMazeMap() {
-
+        this.mazeRooms.put("A", new Room("The starting room. it has a bed, and a locked door that points to East."));
+        this.mazeRooms.put("B", new Room("This room has a door that points to the North."));
+        this.mazeRooms.put("C", new Room("This room has 2 doors, one that points to the North, and the other to south, back to the starting room."));
+        this.mazeRooms.put("D", new Room("The starting room. it has a bed, and a locked door thap points to East."));
+        this.mazeRooms.put("E", new Room("The starting room. it has a bed, and a locked door thap points to East."));
+        this.mazeRooms.put("F", new Room("The starting room. it has a bed, and a locked door thap points to East."));
+        this.mazeRooms.put("G", new Room("The starting room. it has a bed, and a locked door thap points to East."));
+        this.mazeRooms.put("H", new Room("The starting room. it has a bed, and a locked door thap points to East."));
 
     }
 
