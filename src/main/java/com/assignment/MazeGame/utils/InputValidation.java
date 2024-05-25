@@ -12,9 +12,7 @@ public class InputValidation {
 
     public static String userDialogWithInput(String qestion, String goodInput, String badInput, Scanner scanner) throws EndingGameExecption {
         String userInput;
-
         System.out.println(qestion);
-
         while (true) {
             userInput = scanner.nextLine();
             if (!userInput.isEmpty()) {
@@ -22,11 +20,9 @@ public class InputValidation {
             } else {
                 System.out.println(badInput);
             }
-
         }
         if (userInput.equals("EXIT")) {
             throw new EndingGameExecption();
-
         }
 
         return userInput;
