@@ -1,16 +1,15 @@
 package com.assignment.MazeGame.models;
 
 import com.assignment.MazeGame.intefaces.PlayerInterface;
-import com.assignment.MazeGame.intefaces.RoomInterface;
 
 import java.util.ArrayList;
 
 public class MazeWalkerPlayer implements PlayerInterface {
     private String nickname;
-    private Room currentLocation;
+    private MazeRoom currentLocation;
     private ArrayList<Subject> inventory = new ArrayList<Subject>();
 
-    public MazeWalkerPlayer(String nickname, Room startRoom) {
+    public MazeWalkerPlayer(String nickname, MazeRoom startRoom) {
         this.nickname = nickname;
         this.currentLocation = startRoom;
     }
@@ -18,18 +17,27 @@ public class MazeWalkerPlayer implements PlayerInterface {
 
 
     @Override
-    public String examineSubject(Subject subject) {
-        return "inventory";
+    public void examineSubject(Subject subject) {
+        System.out.println("examining subject...");
     }
 
     @Override
-    public String move(Direction direction) {
-        return "mooving";
+    public void move(Direction direction) {
+        if (currentLocation.getDoors().get(direction) != null) {
+            if (currentLocation.getDoors().get(direction).isOpen()){
+                currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
+                System.out.println("You have moved rooms! ");
+            } else {
+                System.out.println("This " + direction + " directed door is locked!");
+            }
+        } else { //in case the user chose door direction that doesnt exist in this room.
+            System.out.println("There isnt any door for this direction, in this room!");
+        }
     }
 
     @Override
-    public String openSubject(Subject subject) {
-        return "opening...";
+    public void openSubject(Subject subject) {
+        System.out.println("opened a subject");
     }
 
     @Override
@@ -51,7 +59,7 @@ public class MazeWalkerPlayer implements PlayerInterface {
     }
 
     public void setCurrentLocation(Room currentLocation) {
-        this.currentLocation = currentLocation;
+        this.currentLocation = (MazeRoom) currentLocation;
     }
 
     public ArrayList<Subject> getInventory() {
