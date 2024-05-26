@@ -1,7 +1,7 @@
 package com.assignment.MazeGame.intefaces;
 
 import com.assignment.MazeGame.models.Direction;
-import com.assignment.MazeGame.models.Subject;
+import com.assignment.MazeGame.models.subjects.Subject;
 
 public interface PlayerInterface {
     public void examineSubject(Subject subject);

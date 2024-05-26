@@ -1,6 +1,9 @@
-package com.assignment.MazeGame.models;
+package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.intefaces.PlayerInterface;
+import com.assignment.MazeGame.models.Direction;
+import com.assignment.MazeGame.models.Room;
+import com.assignment.MazeGame.models.subjects.Subject;
 
 import java.util.ArrayList;
 

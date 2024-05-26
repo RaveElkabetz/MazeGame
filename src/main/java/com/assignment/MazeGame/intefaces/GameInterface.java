@@ -1,7 +1,6 @@
 package com.assignment.MazeGame.intefaces;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.models.MazeWalkerPlayer;
 
 public interface GameInterface {
     public void start();

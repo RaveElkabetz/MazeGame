@@ -3,6 +3,10 @@ package com.assignment.MazeGame.services;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.intefaces.GameInterface;
 import com.assignment.MazeGame.models.*;
+import com.assignment.MazeGame.models.maze.MazeGameMap;
+import com.assignment.MazeGame.models.maze.MazeRoom;
+import com.assignment.MazeGame.models.maze.MazeWalkerPlayer;
+import com.assignment.MazeGame.models.subjects.Subject;
 import com.assignment.MazeGame.utils.InputValidation;
 
 import java.util.ArrayList;
@@ -104,7 +108,8 @@ public class MazeGame implements GameInterface {
 
 
             }
-            //TODO finish this switch case !!!
+            //TODO if i have an object that can be used its need to be got from the inventory but its need to be started
+            //TODO progrematocally via the examined objects
 
         }
 

@@ -1,6 +1,7 @@
 package com.assignment.MazeGame.models;
 
 import com.assignment.MazeGame.intefaces.RoomInterface;
+import com.assignment.MazeGame.models.subjects.Subject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class Room implements RoomInterface {
     @Override
     public ArrayList<Subject> getRoomSubjects() {
         return this.subjectsInTheRoom;
+    }
+
+    public void setSubjectsInTheRoom(ArrayList<Subject> subjectsInTheRoom) {
+        this.subjectsInTheRoom = subjectsInTheRoom;
     }
 
     public void printAvailableSubjects() {

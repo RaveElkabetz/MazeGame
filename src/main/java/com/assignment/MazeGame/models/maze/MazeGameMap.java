@@ -1,8 +1,13 @@
-package com.assignment.MazeGame.models;
+package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.intefaces.GameMap;
 import com.assignment.MazeGame.intefaces.RoomInterface;
+import com.assignment.MazeGame.models.Direction;
+import com.assignment.MazeGame.models.Door;
+import com.assignment.MazeGame.models.subjects.Subject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.assignment.MazeGame.models.Direction.*;
@@ -65,6 +70,7 @@ public class MazeGameMap implements GameMap {
             put(EAST, new Door(mazeRooms.get("G")));
         }});
 
+       // mazeRooms.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(Arrays.asList(new Subject())));
 
 
     }
