@@ -4,7 +4,12 @@ import com.assignment.MazeGame.intefaces.GameMapInterface;
 import com.assignment.MazeGame.intefaces.RoomInterface;
 import com.assignment.MazeGame.models.Direction;
 import com.assignment.MazeGame.models.Door;
+import com.assignment.MazeGame.models.subjects.Bed;
+import com.assignment.MazeGame.models.subjects.Pin;
+import com.assignment.MazeGame.models.subjects.Subject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.assignment.MazeGame.models.Direction.*;
@@ -28,11 +33,11 @@ public class MazeGameMap implements GameMapInterface {
 
         //initializing the doors for all the rooms
         mazeRooms.get("A").setDoors(new HashMap<Direction, Door>() {{
-            put(WEST, new Door(mazeRooms.get("B"),false, "Hair Pin"));
+            put(WEST, new Door(mazeRooms.get("B"),false, "Pin"));
         }});
 
         mazeRooms.get("B").setDoors(new HashMap<Direction, Door>() {{
-            put(WEST, new Door(mazeRooms.get("A"),false, "Hair Pin"));
+            put(WEST, new Door(mazeRooms.get("A"),false, "Pin"));
         }});
 
         mazeRooms.get("C").setDoors(new HashMap<Direction, Door>() {{
@@ -67,7 +72,12 @@ public class MazeGameMap implements GameMapInterface {
             put(EAST, new Door(mazeRooms.get("G")));
         }});
 
-       // mazeRooms.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(Arrays.asList(new Subject())));
+        mazeRooms.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(
+                Arrays.asList(new Bed(
+                        "This is just an old and stinky bed...wait! there is something under the bed!\n" +
+                                "you found a pin! its been added to your inventory."
+                ))));
+
 
 
     }

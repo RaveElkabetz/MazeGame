@@ -1,5 +1,6 @@
 package com.assignment.MazeGame.models;
 
+import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
 import com.assignment.MazeGame.intefaces.RoomInterface;
 import com.assignment.MazeGame.models.subjects.Subject;
 
@@ -44,12 +45,12 @@ public class Room implements RoomInterface {
         this.subjectsInTheRoom = subjectsInTheRoom;
     }
 
-    public void printAvailableSubjects() {
+    public void printAvailableSubjects() throws NoSuchSubjectException {
         if (!this.getRoomSubjects().isEmpty()) {
             this.getRoomSubjects().forEach(subject -> System.out.println(subject.getName() + ""));
 
         } else {
-            System.out.println("No subjects in this room!");
+            throw new NoSuchSubjectException("There isnt any subjects in this room!");
         }
     }
 

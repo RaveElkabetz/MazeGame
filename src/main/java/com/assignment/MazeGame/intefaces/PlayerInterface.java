@@ -8,4 +8,5 @@ public interface PlayerInterface {
     public void move(Direction direction);
     public void openSubject(Subject subject);
     public String whereIAm();
+    public void addSubjectToInventory(Subject subject);
 }

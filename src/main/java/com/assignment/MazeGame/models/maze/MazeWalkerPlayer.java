@@ -49,6 +49,11 @@ public class MazeWalkerPlayer implements PlayerInterface {
 
     }
 
+    @Override
+    public void addSubjectToInventory(Subject subject) {
+        this.inventory.add(subject);
+    }
+
     public String getNickname() {
         return nickname;
     }

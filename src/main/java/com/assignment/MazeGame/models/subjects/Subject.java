@@ -1,8 +1,7 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.intefaces.SubjectInterface;
 
-public class Subject implements SubjectInterface {
+public class Subject {
     private String name;
     private String description;
     private boolean openable = false;
@@ -26,15 +25,10 @@ public class Subject implements SubjectInterface {
         this.description = description;
     }
 
-
-    @Override
-    public void examine() {
-        this.examined = true;
-        System.out.println(this.description);
-    }
-
     public boolean isExamined() {
         return examined;
     }
+
+
 }
 

@@ -1,6 +1,9 @@
 package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
+import com.assignment.MazeGame.Exceptions.NoSuchDirectionException;
+import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
+import com.assignment.MazeGame.intefaces.CanBeExaminedSubjectInteface;
 import com.assignment.MazeGame.intefaces.GameInterface;
 import com.assignment.MazeGame.models.*;
 import com.assignment.MazeGame.models.subjects.Subject;
@@ -30,6 +33,16 @@ public class MazeGame implements GameInterface {
     @Override
     public void start() {
         try {
+            System.out.println
+                    ("████████╗██╗  ██╗███████╗    ███╗   ███╗ █████╗ ███████╗███████╗\n" +
+                    "╚══██╔══╝██║  ██║██╔════╝    ████╗ ████║██╔══██╗╚══███╔╝██╔════╝\n" +
+                    "   ██║   ███████║█████╗█████╗██╔████╔██║███████║  ███╔╝ █████╗  \n" +
+                    "   ██║   ██╔══██║██╔══╝╚════╝██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝  \n" +
+                    "   ██║   ██║  ██║███████╗    ██║ ╚═╝ ██║██║  ██║███████╗███████╗\n" +
+                    "   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝"
+                    );
+
+
             boolean gameOn = true;
             mazeGameMap.initMap();
             String playerName = addNewPlayerToTheMaze();
@@ -81,50 +94,81 @@ public class MazeGame implements GameInterface {
         System.out.println("At any step, press H for help, EXIT to exit, W to know where you are. M to move,");
 
         while (true) {
-            System.out.println("Current location:");
-            System.out.println(players.get(playerNickName).whereIAm());
-            switch (scanner.nextLine()) {
-                case "EXIT":
-                    throw new EndingGameExecption();
-                case "H":
-                    System.out.println("press H for help, EXIT to exit, W to know where you are.");
-                case "M":
-                    System.out.println("in which of the following directions you want to enter?");
-                    showPossibleDirections(playerNickName);
-                    Direction direction = getDirectionFromPlayer();
-                    if (direction!=null) players.get(playerNickName).move(direction);
-                    break;
-                case "E":
-                    System.out.println("choose the the subject in this room you want to examine:");
-                    players.get(playerNickName).getCurrentLocation().printAvailableSubjects();
-                    String subjectToExamine = getSubjectToExamineFromPlayer(players.get(playerNickName).getCurrentLocation().getRoomSubjects());
+             try {
+                System.out.println("Current location:");
+                MazeWalkerPlayer player = players.get(playerNickName);
+                System.out.println(player.whereIAm());
+                switch (scanner.nextLine()) {
+                    case "EXIT":
+                        throw new EndingGameExecption();
+                    case "H":
+                        System.out.println("press H for help, EXIT to exit, W to know where you are.");
+                    case "M":
+                        System.out.println("in which of the following directions you want to enter?");
+                        showPossibleDirections(playerNickName);
+                        Direction direction = getDirectionFromPlayer();
+                        player.move(direction);
+                        break;
+                    case "E":
+                        System.out.println("choose the the subject in this room you want to examine:");
+                        player.getCurrentLocation().printAvailableSubjects();
+                        Subject subject = getSubjectInTheRoomToExamine(player.getCurrentLocation().getRoomSubjects());
+                        if (subject instanceof CanBeExaminedSubjectInteface subjectToExamine) {
+                            player.addSubjectToInventory(subjectToExamine.examine());
+                        }
+                        break;
+                    case "I":
+                        if (player.getInventory().isEmpty()) {
+                            System.out.println("No items in your inventory.");
+                            continue;
+                        } else {
+                            System.out.println("Choose item from your inventory:");
+                            player.getInventory().forEach(System.out::println);
+                        }
+
+                        break;
 
 
-                default:
-                    System.out.println("No valid input! Enter `H` for help");
 
 
-            }
-            //TODO if i have an object that can be used its need to be got from the inventory but its need to be started
-            //TODO progrematocally via the examined objects
+                    default:
+                        System.out.println("No valid input! Enter `H` for help");
 
+
+                }
+                //TODO if i have an object that can be used its need to be got from the inventory but its need to be started
+                //TODO progrematocally via the examined objects
+            } catch (NoSuchDirectionException | NoSuchSubjectException e) {
+                 System.out.println(e.getMessage());
+                 continue;
+             } catch (EndingGameExecption e) {
+                 this.closeGame();
+             } catch (Exception e) {
+                 System.out.println("Error: try again");
+                 continue;
+             }
         }
 
     }
 
-    private String getSubjectToExamineFromPlayer(ArrayList<Subject> roomSubjects) throws EndingGameExecption {
-        return InputValidation.userDialogWithInput(
+    private Subject getSubjectInTheRoomToExamine(ArrayList<Subject> roomSubjects) throws EndingGameExecption, NoSuchSubjectException {
+        String userInput =  InputValidation.userDialogWithInput(
                 "Which subject you wish to examine?",
                  roomSubjects,
                 "no such subject in this room.",
                 scanner
         );
+        for (Subject subject : roomSubjects) {
+            if (subject.getName().equals(userInput))
+                return subject;
+        }
+        throw new NoSuchSubjectException("No such subject in this room!");
     }
 
     private void showPossibleSubjectsToExamine() {
     }
 
-    private Direction getDirectionFromPlayer() throws EndingGameExecption {
+    private Direction getDirectionFromPlayer() throws EndingGameExecption, NoSuchDirectionException {
         String direction = InputValidation.userDialogWithInput(
                 "",
                 new ArrayList<String>(Arrays.asList("NORTH","EAST","SOUTH","WEST")),
@@ -140,8 +184,8 @@ public class MazeGame implements GameInterface {
             case "WEST":
                 return WEST;
             default:
+                throw new NoSuchDirectionException();
         }
-        return null;
     }
 
     private void showPossibleDirections(String playerNickName) {
