@@ -1,11 +1,8 @@
-package com.assignment.MazeGame.services;
+package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.intefaces.GameInterface;
 import com.assignment.MazeGame.models.*;
-import com.assignment.MazeGame.models.maze.MazeGameMap;
-import com.assignment.MazeGame.models.maze.MazeRoom;
-import com.assignment.MazeGame.models.maze.MazeWalkerPlayer;
 import com.assignment.MazeGame.models.subjects.Subject;
 import com.assignment.MazeGame.utils.InputValidation;
 

@@ -33,7 +33,7 @@ public class InputValidation {
         }
     }
 
-    public static  <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, Scanner scanner) throws EndingGameExecption {
+    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, Scanner scanner) throws EndingGameExecption {
         return userDialogWithInput(qestion, goodInputsOptions,badInputResponse, "", scanner);
     }
 

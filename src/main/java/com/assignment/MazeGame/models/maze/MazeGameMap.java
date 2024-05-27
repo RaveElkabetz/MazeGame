@@ -1,18 +1,15 @@
 package com.assignment.MazeGame.models.maze;
 
-import com.assignment.MazeGame.intefaces.GameMap;
+import com.assignment.MazeGame.intefaces.GameMapInterface;
 import com.assignment.MazeGame.intefaces.RoomInterface;
 import com.assignment.MazeGame.models.Direction;
 import com.assignment.MazeGame.models.Door;
-import com.assignment.MazeGame.models.subjects.Subject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.assignment.MazeGame.models.Direction.*;
 
-public class MazeGameMap implements GameMap {
+public class MazeGameMap implements GameMapInterface {
 
     private final HashMap<String, MazeRoom> mazeRooms = new HashMap<>();
 

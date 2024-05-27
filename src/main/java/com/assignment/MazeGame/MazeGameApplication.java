@@ -1,7 +1,6 @@
 package com.assignment.MazeGame;
 
-import com.assignment.MazeGame.services.MazeGame;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.assignment.MazeGame.models.maze.MazeGame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

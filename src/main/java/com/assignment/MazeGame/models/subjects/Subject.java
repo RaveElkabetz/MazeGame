@@ -6,6 +6,7 @@ public class Subject implements SubjectInterface {
     private String name;
     private String description;
     private boolean openable = false;
+    private boolean examined = false;
 
     public String getName() {
         return name;
@@ -25,10 +26,15 @@ public class Subject implements SubjectInterface {
         this.description = description;
     }
 
+
     @Override
     public void examine() {
-
+        this.examined = true;
+        System.out.println(this.description);
     }
 
+    public boolean isExamined() {
+        return examined;
+    }
 }
 

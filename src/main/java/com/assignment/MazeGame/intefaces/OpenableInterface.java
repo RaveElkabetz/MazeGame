@@ -1,5 +1,5 @@
 package com.assignment.MazeGame.intefaces;
 
-public interface Openable {
+public interface OpenableInterface {
     public void open();
 }

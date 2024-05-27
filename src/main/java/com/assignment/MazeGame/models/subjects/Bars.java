@@ -1,9 +1,9 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.intefaces.Openable;
+import com.assignment.MazeGame.intefaces.OpenableInterface;
 import com.assignment.MazeGame.intefaces.UseOnInteface;
 
-public class Bars extends Subject implements UseOnInteface , Openable {
+public class Bars extends Subject implements UseOnInteface , OpenableInterface {
     private boolean open;
 
     public Bars(String description) {
