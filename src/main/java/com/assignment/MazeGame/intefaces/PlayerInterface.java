@@ -1,6 +1,6 @@
 package com.assignment.MazeGame.intefaces;
 
-import com.assignment.MazeGame.models.Direction;
+import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.subjects.Subject;
 
 public interface PlayerInterface {

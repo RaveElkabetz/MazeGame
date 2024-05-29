@@ -2,17 +2,25 @@ package com.assignment.MazeGame.models;
 
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
 import com.assignment.MazeGame.intefaces.RoomInterface;
+import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.subjects.Subject;
+import com.assignment.MazeGame.utils.InputOutputUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Room implements RoomInterface {
+
     private static int roomCount = 0;
+
     private final String description;
+
     private Map<Direction, Door> doors = new HashMap<Direction, Door>();
+
     private ArrayList<Subject> subjectsInTheRoom = new ArrayList<>();
+
+
 
     public Room(String description) {
         this.roomCount++;
@@ -46,12 +54,15 @@ public class Room implements RoomInterface {
     }
 
     public void printAvailableSubjects() throws NoSuchSubjectException {
-        if (!this.getRoomSubjects().isEmpty()) {
-            this.getRoomSubjects().forEach(subject -> System.out.println(subject.getName() + ""));
-
+        if (!subjectsInTheRoom.isEmpty()) {
+            InputOutputUtils.printAvailableObjects(subjectsInTheRoom);
         } else {
-            throw new NoSuchSubjectException("There isnt any subjects in this room!");
+            throw new NoSuchSubjectException("There isn't any subjects in this room!");
         }
     }
 
+    @Override
+    public String toString() {
+        return description;
+    }
 }

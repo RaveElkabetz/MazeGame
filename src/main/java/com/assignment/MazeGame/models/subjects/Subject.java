@@ -1,10 +1,11 @@
 package com.assignment.MazeGame.models.subjects;
 
 
-public class Subject {
-    private String name;
-    private String description;
-    private boolean openable = false;
+import com.assignment.MazeGame.intefaces.UseOnInteface;
+
+public class Subject implements UseOnInteface {
+    private final String name;
+    private final String description;
     private boolean examined = false;
 
     public String getName() {
@@ -20,7 +21,7 @@ public class Subject {
         return name;
     }
 
-    public Subject(String name, String description) {
+    public Subject(String name, String description,boolean usable) {
         this.name = name;
         this.description = description;
     }
@@ -30,5 +31,9 @@ public class Subject {
     }
 
 
+    @Override
+    public void useOn(Subject subject) {
+        System.out.println("this subject cant be used on with like that.");;
+    }
 }
 

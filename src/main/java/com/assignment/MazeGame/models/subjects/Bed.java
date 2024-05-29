@@ -11,7 +11,7 @@ public class Bed extends Subject implements CanBeExaminedSubjectInteface {
     private boolean stillContains = true;
 
     public Bed( String description) {
-        super("Bed", description);
+        super("Bed", description,true);
         this.containedSubject = new Pin("Long ,thin and very strong pin.");
     }
 

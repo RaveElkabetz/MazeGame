@@ -1,22 +1,14 @@
 package com.assignment.MazeGame.models.subjects;
 
 import com.assignment.MazeGame.intefaces.OpenableInterface;
-import com.assignment.MazeGame.intefaces.UseOnInteface;
+import com.assignment.MazeGame.models.Door;
 
-public class Bars extends Subject implements UseOnInteface , OpenableInterface {
+public class Bars extends Subject implements OpenableInterface {
     private boolean open;
+    private Door onWhichDoorInstalled;
 
     public Bars(String description) {
-        super("Bars", description);
-    }
-
-    @Override
-    public String useOn(Subject subject) {
-        if (subject.getName().equals("Pin")) {
-            this.open();
-            return  "The Bars are now open!";
-        }
-        return "This is not the right subject to use on the bars...";
+        super("Bars", description, true);
     }
 
     @Override
@@ -28,5 +20,15 @@ public class Bars extends Subject implements UseOnInteface , OpenableInterface {
         return this.open;
     }
 
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 
+    public Door getOnWhichDoorInstalled() {
+        return onWhichDoorInstalled;
+    }
+
+    public void setOnWhichDoorInstalled(Door onWhichDoorInstalled) {
+        this.onWhichDoorInstalled = onWhichDoorInstalled;
+    }
 }

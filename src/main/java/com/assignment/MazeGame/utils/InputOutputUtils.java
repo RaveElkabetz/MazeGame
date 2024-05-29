@@ -3,9 +3,10 @@ package com.assignment.MazeGame.utils;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class InputValidation {
+public class InputOutputUtils {
 
     public static boolean isValidInput(String input) {
         return input != null && !input.isEmpty();
@@ -53,5 +54,9 @@ public class InputValidation {
             throw new EndingGameExecption();
         }
         return userInput;
+    }
+
+    public static  <T> void printAvailableObjects(List<T> objects) {
+        objects.forEach(Object-> System.out.println(Object.toString()));
     }
 }

@@ -1,17 +1,20 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.intefaces.CanBeTakenInterface;
-import com.assignment.MazeGame.intefaces.UseWithInterface;
 
-public class Pin extends Subject implements CanBeTakenInterface {
-    public Pin( String description) {
-        super("Pin", description);
+
+public class Pin extends Subject  {
+    public Pin(String description) {
+        super("Pin", description, true);
     }
 
-
-    private boolean isTaken = false;
     @Override
-    public boolean isTaken() {
-        return isTaken;
+    public void useOn(Subject subject) {
+        if (subject instanceof Bars) {
+            ((Bars) subject).open();
+            System.out.println("The locked bars are now open! you can proceed to the next room.");
+        } else {
+            System.out.println("this subject cannot be used on other subject like that.");
+        }
     }
+
 }

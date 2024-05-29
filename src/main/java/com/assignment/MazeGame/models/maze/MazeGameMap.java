@@ -2,17 +2,17 @@ package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.intefaces.GameMapInterface;
 import com.assignment.MazeGame.intefaces.RoomInterface;
-import com.assignment.MazeGame.models.Direction;
+import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.Door;
+import com.assignment.MazeGame.models.subjects.Bars;
 import com.assignment.MazeGame.models.subjects.Bed;
-import com.assignment.MazeGame.models.subjects.Pin;
 import com.assignment.MazeGame.models.subjects.Subject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static com.assignment.MazeGame.models.Direction.*;
+import static com.assignment.MazeGame.models.enums.Direction.*;
 
 public class MazeGameMap implements GameMapInterface {
 
@@ -21,7 +21,7 @@ public class MazeGameMap implements GameMapInterface {
     @Override
     public void initMap() {
         //inserting the maze rooms to the hashmap
-        this.mazeRooms.put("A", new MazeRoom("The starting room. it has a bed, and a locked door that points to west."));
+        this.mazeRooms.put("A", new MazeRoom("You are in the starting room."));
         this.mazeRooms.put("B", new MazeRoom("This room has a door that points to the North."));
         this.mazeRooms.put("C", new MazeRoom("This room has 2 doors, one that points to the North, and the other to south, back to the starting room."));
         this.mazeRooms.put("D", new MazeRoom("This room has 3 doors, one that points to the North, the other to south and one to the east."));
@@ -33,11 +33,11 @@ public class MazeGameMap implements GameMapInterface {
 
         //initializing the doors for all the rooms
         mazeRooms.get("A").setDoors(new HashMap<Direction, Door>() {{
-            put(WEST, new Door(mazeRooms.get("B"),false, "Pin"));
+            put(WEST, new Door(mazeRooms.get("B")));
         }});
 
         mazeRooms.get("B").setDoors(new HashMap<Direction, Door>() {{
-            put(WEST, new Door(mazeRooms.get("A"),false, "Pin"));
+            put(WEST, new Door(mazeRooms.get("A")));
         }});
 
         mazeRooms.get("C").setDoors(new HashMap<Direction, Door>() {{
@@ -76,7 +76,9 @@ public class MazeGameMap implements GameMapInterface {
                 Arrays.asList(new Bed(
                         "This is just an old and stinky bed...wait! there is something under the bed!\n" +
                                 "you found a pin! its been added to your inventory."
-                ))));
+                ),
+                        new Bars("This bars must be unlocked in order to get out!"))));
+
 
 
 

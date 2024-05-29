@@ -1,8 +1,9 @@
 package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.intefaces.PlayerInterface;
-import com.assignment.MazeGame.models.Direction;
+import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.Room;
+import com.assignment.MazeGame.models.subjects.Bars;
 import com.assignment.MazeGame.models.subjects.Subject;
 
 import java.util.ArrayList;
@@ -27,15 +28,27 @@ public class MazeWalkerPlayer implements PlayerInterface {
     @Override
     public void move(Direction direction) {
         if (currentLocation.getDoors().get(direction) != null) {
-            if (currentLocation.getDoors().get(direction).isOpen()){
+            //todo: need to understand how to reimplement the locking mechanism
+            if (checkIfRoomHasBarsAndAreOpen(direction)) {
+                //moving to next room by updating the current location
                 currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
                 System.out.println("You have moved rooms! ");
             } else {
                 System.out.println("This " + direction + " directed door is locked!");
             }
-        } else { //in case the user chose door direction that doesnt exist in this room.
-            System.out.println("There isnt any door for this direction, in this room!");
+        } else { //in case the user chose door direction that doesn't exist in this room.
+            System.out.println("There isn't any door in this direction!");
         }
+    }
+
+    private boolean checkIfRoomHasBarsAndAreOpen(Direction direction) {
+        for (Subject subject : currentLocation.getRoomSubjects()) {
+            if (subject.toString().equals(Bars.class.toString())) {
+                if (((Bars) subject).isOpen())
+                    return true;
+            }
+        }
+        return false;
     }
 
     @Override
