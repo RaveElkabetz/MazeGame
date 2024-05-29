@@ -18,12 +18,12 @@ public class InputOutputUtils {
         while (true) {
             userInput = scanner.nextLine();
             if (!userInput.isEmpty() ) {
-                if (userInput.equals("EXIT")) {
+                if (userInput.equalsIgnoreCase("EXIT")) {
                     throw new EndingGameExecption();
                 }
                 if (!goodInputsOptions.isEmpty()) {
                     for (T goodInput : goodInputsOptions) {
-                        if (userInput.equals(goodInput.toString())) {
+                        if (userInput.equalsIgnoreCase(goodInput.toString())) {
                             System.out.println(goodInputResponse);
                             return userInput; // Exit the loop if the input is valid
                         }
@@ -40,7 +40,7 @@ public class InputOutputUtils {
 
     public static String userDialogWithInput(String qestion, String goodInputResponse, String badInputResponse,  Scanner scanner) throws EndingGameExecption {
         String userInput;
-        System.out.println(qestion);
+        if (!qestion.isEmpty()) System.out.println(qestion);
         while (true) {
             userInput = scanner.nextLine();
             if (!userInput.isEmpty()) {
@@ -50,7 +50,7 @@ public class InputOutputUtils {
                 System.out.println(badInputResponse);
             }
         }
-        if (userInput.equals("EXIT")) {
+        if (userInput.equalsIgnoreCase("EXIT")) {
             throw new EndingGameExecption();
         }
         return userInput;

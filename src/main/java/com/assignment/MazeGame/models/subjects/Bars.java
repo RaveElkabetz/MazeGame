@@ -1,34 +1,23 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.intefaces.OpenableInterface;
-import com.assignment.MazeGame.models.Door;
+import com.assignment.MazeGame.models.enums.Direction;
 
-public class Bars extends Subject implements OpenableInterface {
-    private boolean open;
-    private Door onWhichDoorInstalled;
+public class Bars extends BlockableSubject  {
 
-    public Bars(String description) {
-        super("Bars", description, true);
+    public Bars(String description, Direction direction) {
+        super("Bars", description, direction);
     }
 
-    @Override
+/*    @Override
     public void open() {
         this.open = true;
     }
 
     public boolean isOpen() {
         return this.open;
-    }
+    }*/
 
-    public void setOpen(boolean open) {
-        this.open = open;
-    }
-
-    public Door getOnWhichDoorInstalled() {
-        return onWhichDoorInstalled;
-    }
-
-    public void setOnWhichDoorInstalled(Door onWhichDoorInstalled) {
-        this.onWhichDoorInstalled = onWhichDoorInstalled;
-    }
+/*    public Direction getDirection() {
+        return direction;
+    }*/
 }

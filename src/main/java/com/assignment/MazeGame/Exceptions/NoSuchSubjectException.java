@@ -5,15 +5,10 @@ public class NoSuchSubjectException extends Exception{
 
 
     public NoSuchSubjectException() {
-
     }
 
     public NoSuchSubjectException(String message) {
-        this.message = message;
+        super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

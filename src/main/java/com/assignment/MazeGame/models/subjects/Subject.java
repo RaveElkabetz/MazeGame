@@ -21,7 +21,7 @@ public class Subject implements UseOnInteface {
         return name;
     }
 
-    public Subject(String name, String description,boolean usable) {
+    public Subject(String name, String description) {
         this.name = name;
         this.description = description;
     }

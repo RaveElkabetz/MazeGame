@@ -1,10 +1,12 @@
 package com.assignment.MazeGame.Exceptions;
 
 public class EndingGameExecption extends Exception {
-    private String message="Exiting the game...";
 
-    @Override
-    public String getMessage() {
-        return message;
+    public EndingGameExecption() {
+        super("Exiting the game...");
+    }
+
+    public EndingGameExecption(String message) {
+        super(message);
     }
 }
