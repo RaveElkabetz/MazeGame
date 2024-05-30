@@ -1,7 +1,7 @@
-package com.assignment.MazeGame.models.NPC;
+package com.assignment.MazeGame.models.subjects;
 
+import com.assignment.MazeGame.abstractClasses.BlockableSubject;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.models.subjects.BlockableSubject;
 
 public class Dog extends BlockableSubject {
 

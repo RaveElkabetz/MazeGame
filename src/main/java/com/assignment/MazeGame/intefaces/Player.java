@@ -3,9 +3,9 @@ package com.assignment.MazeGame.intefaces;
 import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.models.subjects.Subject;
+import com.assignment.MazeGame.abstractClasses.Subject;
 
-public interface PlayerInterface {
+public interface Player {
     public void examineSubject(Subject subject);
     public void move(Direction direction) throws DoorUnPassableException, EndingGameExecption;
     public void openSubject(Subject subject);

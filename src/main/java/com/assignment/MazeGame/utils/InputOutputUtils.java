@@ -1,10 +1,10 @@
 package com.assignment.MazeGame.utils;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
+import com.assignment.MazeGame.intefaces.providerInterfaces.UserInputProvider;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class InputOutputUtils {
 
@@ -12,11 +12,13 @@ public class InputOutputUtils {
         return input != null && !input.isEmpty();
     }
 
-    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, String goodInputResponse, Scanner scanner) throws EndingGameExecption {
+    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, String goodInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         String userInput;
-        System.out.println(qestion);
+        if (!qestion.isEmpty()) {
+            System.out.println(qestion);
+        }
         while (true) {
-            userInput = scanner.nextLine();
+            userInput = userInputProvider.getStringInput();
             if (!userInput.isEmpty() ) {
                 if (userInput.equalsIgnoreCase("EXIT")) {
                     throw new EndingGameExecption();
@@ -34,15 +36,20 @@ public class InputOutputUtils {
         }
     }
 
-    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, Scanner scanner) throws EndingGameExecption {
-        return userDialogWithInput(qestion, goodInputsOptions,badInputResponse, "", scanner);
+
+    public static <T> String userDialogWithInput( ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+        return userDialogWithInput("", goodInputsOptions,badInputResponse, "", userInputProvider);
     }
 
-    public static String userDialogWithInput(String qestion, String goodInputResponse, String badInputResponse,  Scanner scanner) throws EndingGameExecption {
+    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+        return userDialogWithInput(qestion, goodInputsOptions,badInputResponse, "", userInputProvider);
+    }
+
+    public static String userDialogWithInput(String qestion, String goodInputResponse, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         String userInput;
         if (!qestion.isEmpty()) System.out.println(qestion);
         while (true) {
-            userInput = scanner.nextLine();
+            userInput = userInputProvider.getStringInput();
             if (!userInput.isEmpty()) {
                 System.out.println(goodInputResponse+userInput);
                 break; // Exit the loop if the input is valid

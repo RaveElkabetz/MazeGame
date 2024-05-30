@@ -1,18 +1,17 @@
-package com.assignment.MazeGame.models;
+package com.assignment.MazeGame.abstractClasses;
 
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
-import com.assignment.MazeGame.intefaces.RoomInterface;
+import com.assignment.MazeGame.models.Door;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.models.subjects.Subject;
 import com.assignment.MazeGame.utils.InputOutputUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Room implements RoomInterface {
+public abstract class Room /*implements com.assignment.MazeGame.intefaces.Room*/ {
 
-    private static int roomCount = 0;
+   // private static int roomCount = 0;
 
     private final String description;
 
@@ -23,7 +22,7 @@ public class Room implements RoomInterface {
 
 
     public Room(String description) {
-        this.roomCount++;
+        //this.roomCount++;
         this.description = description;
     }
 
@@ -39,12 +38,7 @@ public class Room implements RoomInterface {
         this.doors = doors;
     }
 
-    @Override
-    public void addDoor(Door door) {
 
-    }
-
-    @Override
     public ArrayList<Subject> getRoomSubjects() {
         return this.subjectsInTheRoom;
     }

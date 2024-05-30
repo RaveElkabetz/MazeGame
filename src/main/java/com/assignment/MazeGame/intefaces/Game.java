@@ -2,7 +2,7 @@ package com.assignment.MazeGame.intefaces;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 
-public interface GameInterface {
+public interface Game {
     public void start();
     public void saveGame();
     public void loadGame();

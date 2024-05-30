@@ -1,11 +1,13 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.intefaces.CanBeExaminedSubjectInteface;
+import com.assignment.MazeGame.intefaces.behaviorInterfaces.CanBeExaminedSubject;
+import com.assignment.MazeGame.abstractClasses.ExaminableSubject;
+import com.assignment.MazeGame.abstractClasses.Subject;
 
 
-public class Bed extends ExaminableSubject implements CanBeExaminedSubjectInteface {
+public class Bed extends ExaminableSubject implements CanBeExaminedSubject {
 
-    public Bed( String description,Subject subject) {
+    public Bed(String description, Subject subject) {
         super("Bed", description,subject);
     }
 

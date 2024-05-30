@@ -1,8 +1,9 @@
 package com.assignment.MazeGame.models.subjects;
 
 
+import com.assignment.MazeGame.abstractClasses.Subject;
 
-public class Pin extends Subject  {
+public class Pin extends Subject {
     public Pin(String description) {
         super("Pin", description);
     }

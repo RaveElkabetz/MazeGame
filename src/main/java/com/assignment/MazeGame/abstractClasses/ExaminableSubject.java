@@ -1,8 +1,8 @@
-package com.assignment.MazeGame.models.subjects;
+package com.assignment.MazeGame.abstractClasses;
 
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
 
-public class ExaminableSubject extends Subject {
+public abstract class ExaminableSubject extends Subject {
 
     private final Subject containedSubject;
 

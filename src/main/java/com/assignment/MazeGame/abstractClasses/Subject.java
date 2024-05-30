@@ -1,9 +1,9 @@
-package com.assignment.MazeGame.models.subjects;
+package com.assignment.MazeGame.abstractClasses;
 
 
-import com.assignment.MazeGame.intefaces.UseOnInteface;
+import com.assignment.MazeGame.intefaces.behaviorInterfaces.UseOn;
 
-public class Subject implements UseOnInteface {
+public abstract class Subject implements UseOn {
     private final String name;
     private final String description;
     private boolean examined = false;

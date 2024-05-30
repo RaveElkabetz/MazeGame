@@ -1,8 +1,8 @@
 package com.assignment.MazeGame.models.subjects;
 
-import com.assignment.MazeGame.models.NPC.Dog;
+import com.assignment.MazeGame.abstractClasses.Subject;
 
-public class Bonzo extends Subject{
+public class Bonzo extends Subject {
     public Bonzo(String description) {
         super("Bonzo", description);
     }

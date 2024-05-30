@@ -2,24 +2,24 @@ package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.intefaces.PlayerInterface;
-import com.assignment.MazeGame.models.NPC.Dog;
-import com.assignment.MazeGame.models.NPC.Guard;
+import com.assignment.MazeGame.intefaces.Player;
+import com.assignment.MazeGame.models.subjects.Dog;
+import com.assignment.MazeGame.models.subjects.Guard;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.models.Room;
+import com.assignment.MazeGame.abstractClasses.Room;
 import com.assignment.MazeGame.models.subjects.Bars;
-import com.assignment.MazeGame.models.subjects.Subject;
+import com.assignment.MazeGame.abstractClasses.Subject;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
 
-public class MazeWalkerPlayer implements PlayerInterface {
+public class MazePlayer implements Player {
     private String nickname;
     private MazeRoom currentLocation;
     private ArrayList<Subject> inventory = new ArrayList<Subject>();
 
-    public MazeWalkerPlayer(String nickname, MazeRoom startRoom) {
+    public MazePlayer(String nickname, MazeRoom startRoom) {
         this.nickname = nickname;
         this.currentLocation = startRoom;
     }
@@ -44,33 +44,6 @@ public class MazeWalkerPlayer implements PlayerInterface {
         } else {//in case the user chose door direction that doesn't exist in this room.
             System.out.println("There isn't any door in this direction!");
         }
-
-
-
-
-
-
-
-/*        if (currentLocation.getDoors().get(direction) != null) {
-            //todo: need to understand how to reimplement the locking mechanism
-            //checkIfBarsAreOpen()
-            Optional<Bars> barsOptional = checkIfRoomHasBars(direction);
-            if (barsOptional.isPresent()) {
-                if (barsOptional.get().isOpen()) {
-                    //moving to next room by updating the current location after checking if the bars are open
-                    currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
-                    System.out.println("You have moved rooms! ");
-                } else {
-                    System.out.println("This " + direction + " directed door is locked!");
-                }
-            } else {
-                //moving to next room by updating the current location without the need to open the bars.
-                currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
-                System.out.println("You have moved rooms! ");
-            }
-        } else { //in case the user chose door direction that doesn't exist in this room.
-            System.out.println("There isn't any door in this direction!");
-        }*/
     }
 
     private void checkIfRoomContainsAGuard() throws EndingGameExecption {
@@ -94,7 +67,7 @@ public class MazeWalkerPlayer implements PlayerInterface {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Bars) {
                 if (((Bars) subject).isBlocking() && ((Bars) subject).getWhichDirectionIsBlocked() == direction)
-                    throw new DoorUnPassableException("Bars must be unlocked!");
+                    throw new DoorUnPassableException("These Bars are locked, and it blocking the pass way!");
             }
         }
     }

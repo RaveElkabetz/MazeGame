@@ -1,13 +1,14 @@
-package com.assignment.MazeGame.models.subjects;
+package com.assignment.MazeGame.abstractClasses;
 
 import com.assignment.MazeGame.models.enums.Direction;
 
-public class BlockableSubject extends Subject{
+public abstract class BlockableSubject extends Subject {
     private Direction whichDirectionIsBlocked;
     private boolean blocking = true;
 
     public BlockableSubject(String name, String description, Direction direction) {
         super(name, description);
+        this.whichDirectionIsBlocked = direction;
     }
 
     public boolean isBlocking() {

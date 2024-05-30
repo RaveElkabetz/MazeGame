@@ -1,10 +1,9 @@
 package com.assignment.MazeGame.models;
 
-import com.assignment.MazeGame.intefaces.DoorInterface;
+import com.assignment.MazeGame.abstractClasses.Room;
 import com.assignment.MazeGame.models.subjects.Bars;
-import com.assignment.MazeGame.models.subjects.Subject;
 
-public class Door implements DoorInterface {
+public class Door implements com.assignment.MazeGame.intefaces.Door {
     private final String description;
     private final Room connectedRoom;
     private final String unlockKey = "";

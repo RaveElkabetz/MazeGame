@@ -4,30 +4,39 @@ import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.Exceptions.NoSuchDirectionException;
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
-import com.assignment.MazeGame.intefaces.CanBeExaminedSubjectInteface;
-import com.assignment.MazeGame.intefaces.GameInterface;
-import com.assignment.MazeGame.models.*;
+import com.assignment.MazeGame.intefaces.*;
+import com.assignment.MazeGame.datastores.HashMapMazeRoomDataStore;
+import com.assignment.MazeGame.abstractClasses.Room;
+import com.assignment.MazeGame.intefaces.behaviorInterfaces.CanBeExaminedSubject;
+import com.assignment.MazeGame.intefaces.providerInterfaces.UserInputProvider;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.models.subjects.Subject;
+import com.assignment.MazeGame.abstractClasses.Subject;
 import com.assignment.MazeGame.utils.InputOutputUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
 
 import static com.assignment.MazeGame.models.enums.Direction.*;
 
 
-public class MazeGame implements GameInterface {
+public class MazeGame implements Game {
 
-    private static final Scanner scanner = new Scanner(System.in);
 
-    private final StringBuilder userInput = new StringBuilder();
+    private final UserInputProvider userInputProvider;
 
-    private final HashMap<String, MazeWalkerPlayer> players = new HashMap<>();
+   // private final HashMap<String, MazePlayer> players = new HashMap<>();
 
-    private MazeGameMap mazeGameMap = new MazeGameMap();
+    private PlayerDataStore playerDataStore;
+
+
+
+    private MazeGameMap mazeGameMap ;
+
+
+    public MazeGame(UserInputProvider userInputProvider, PlayerDataStore playerDataStore) {
+        this.userInputProvider = userInputProvider;
+        this.playerDataStore = playerDataStore;
+    }
 
 
     @Override
@@ -36,6 +45,7 @@ public class MazeGame implements GameInterface {
             printGreatingsToUser();
 
             boolean gameOn = true;
+            mazeGameMap = new MazeGameMap(new HashMapMazeRoomDataStore());
             mazeGameMap.initMap();
             String playerName = addNewPlayerToTheMaze();
             System.out.println(playerName + ", are now entered the mysterious maze, use your objects around you wisely to finish the maze.... ");
@@ -69,9 +79,9 @@ public class MazeGame implements GameInterface {
                 "please enter your nick name:",
                 "your nick name is: ",
                 "Please enter non empty string",
-                scanner);
+                userInputProvider);
 
-        this.players.put(input, new MazeWalkerPlayer(input, (MazeRoom) mazeGameMap.getRoom("A")));
+        this.playerDataStore.put(input, new MazePlayer(input, (MazeRoom) mazeGameMap.getRoom("A")));
         return input;
 
     }
@@ -90,19 +100,18 @@ public class MazeGame implements GameInterface {
     @Override
     public void closeGame() {
         System.out.println("Exiting the game, see you next time!");
-        scanner.close();
     }
 
     @Override
     public void mainGameLoop(String playerNickName) throws EndingGameExecption {
         System.out.println("At any step, press H for help, EXIT to exit, W to know where you are. M to move,");
-        MazeWalkerPlayer player = players.get(playerNickName);
+        MazePlayer player = (MazePlayer) playerDataStore.get(playerNickName);
         while (true) {
              try {
                  Thread.sleep(1500);
                  System.out.println("Current location:");
                  printCurrentLocationAndSubjectsInRoom(player);
-                 switch (scanner.nextLine()) {
+                 switch (userInputProvider.getStringInput()) {
                     case "EXIT":
                         throw new EndingGameExecption();
                     case "H":
@@ -138,6 +147,7 @@ public class MazeGame implements GameInterface {
                  System.out.println(e.getMessage());
              } catch (EndingGameExecption e) {
                  this.closeGame();
+                 return;
              } catch (Exception e) {
                  System.out.println("Error: try again");
              }
@@ -145,51 +155,57 @@ public class MazeGame implements GameInterface {
 
     }
 
-    private void useAvailableSubject(MazeWalkerPlayer player) throws EndingGameExecption, NoSuchSubjectException {
+    private void useAvailableSubject(MazePlayer player) throws EndingGameExecption, NoSuchSubjectException {
+
         //We're allowing using only inventory subjects on other subjects
+        //but we can use the inventory subject on all subjects. both inventory and inventory and room subjects
         System.out.println("With which subject from your inventory you wish to use?");
         showcaseInventory(player);
+        Subject inventorySubject = getSubjectToUseWithFromInventory(player);
 
-        //but we can use the inventory subject on all subjects. both inventory and inventory and room subjects
-        Subject inventorySubject = getSubjectToUseOnFromInventory(player);
+        //creating new list of subjects that is combined with inventory and room subjects
         ArrayList<Subject> inventoryAndRoomSubjectList = new ArrayList<>(player.getInventory());
         inventoryAndRoomSubjectList.addAll(player.getCurrentLocation().getRoomSubjects());
-        //todo debug here!!!
-        InputOutputUtils.printAvailableObjects(inventoryAndRoomSubjectList);
-        String subjectToUseOn = InputOutputUtils.userDialogWithInput("on which subject to use it: ",
-                inventoryAndRoomSubjectList,
-                "Please insert valid subject",
-                scanner);
-        for (Subject subject : inventoryAndRoomSubjectList) {
-            if (subject.toString().equalsIgnoreCase(subjectToUseOn))
-                inventorySubject.useOn(subject);
-        }
 
-
-
+        // use the inventory subject on other subject
+        System.out.println("On which subject to use it?:");
+        getSubjectAndUseOn(inventoryAndRoomSubjectList, inventorySubject);
 
 
     }
 
-    private void examineSubject(MazeWalkerPlayer player) throws NoSuchSubjectException, EndingGameExecption {
+    private void getSubjectAndUseOn(ArrayList<Subject> inventoryAndRoomSubjectList, Subject inventorySubject) throws EndingGameExecption {
+        String subjectToUseOn = InputOutputUtils.userDialogWithInput(
+                inventoryAndRoomSubjectList,
+                "Please insert valid subject",
+                userInputProvider);
+        InputOutputUtils.printAvailableObjects(inventoryAndRoomSubjectList);
+
+        for (Subject subject : inventoryAndRoomSubjectList) {
+            if (subject.toString().equalsIgnoreCase(subjectToUseOn))
+                inventorySubject.useOn(subject);
+        }
+    }
+
+    private void examineSubject(MazePlayer player) throws NoSuchSubjectException, EndingGameExecption {
         System.out.println("choose the the subject in this room you want to examine:");
         player.getCurrentLocation().printAvailableSubjects();
         Subject subject = getSubjectInTheRoomToExamine(player.getCurrentLocation().getRoomSubjects());
-        if (subject instanceof CanBeExaminedSubjectInteface subjectToExamine) {
+        if (subject instanceof CanBeExaminedSubject subjectToExamine) {
             player.addSubjectToInventory(subjectToExamine.examine());
         } else {
             System.out.println(subject.getDescription());
         }
     }
 
-    private void movePlayer(MazeWalkerPlayer player) throws EndingGameExecption, NoSuchDirectionException, DoorUnPassableException {
+    private void movePlayer(MazePlayer player) throws EndingGameExecption, NoSuchDirectionException, DoorUnPassableException {
         System.out.println("in which of the following directions you want to move?");
         showPossibleDirections(player);
         Direction direction = getDirectionFromPlayer();
         player.move(direction);
     }
 
-    private void printCurrentLocationAndSubjectsInRoom(MazeWalkerPlayer player) {
+    private void printCurrentLocationAndSubjectsInRoom(MazePlayer player) {
         Room currentLocation = player.getCurrentLocation();
         System.out.println(currentLocation);
         if (!currentLocation.getRoomSubjects().isEmpty()) {
@@ -199,7 +215,7 @@ public class MazeGame implements GameInterface {
 
     }
 
-    private void showcaseInventory(MazeWalkerPlayer player) throws NoSuchSubjectException {
+    private void showcaseInventory(MazePlayer player) throws NoSuchSubjectException {
         if (player.getInventory().isEmpty()) {
             throw new NoSuchSubjectException("No items in your inventory.");
         } else {
@@ -213,7 +229,7 @@ public class MazeGame implements GameInterface {
                 "Which subject you wish to examine?",
                  roomSubjects,
                 "no such subject in this room.",
-                scanner
+                userInputProvider
         );
         for (Subject subject : roomSubjects) {
             if (subject.getName().equalsIgnoreCase(userInput))
@@ -222,14 +238,16 @@ public class MazeGame implements GameInterface {
         throw new NoSuchSubjectException("No such subject in this room!");
     }
 
-    private Subject getSubjectToUseOnFromInventory(MazeWalkerPlayer player) throws EndingGameExecption, NoSuchSubjectException {
+    private Subject getSubjectToUseWithFromInventory(MazePlayer player) throws EndingGameExecption, NoSuchSubjectException {
         // TODO maybe ask for which subject you want? inventory or room subject?
         ArrayList<Subject> inventory = player.getInventory();
+        if (inventory.isEmpty()) {
+            throw new NoSuchSubjectException("Your inventory is empty!");
+        }
         String userInput =  InputOutputUtils.userDialogWithInput(
-                "Which subject from the inventory you wish to use on/with?",
                 inventory,
                 "no valid input.",
-                scanner
+                userInputProvider
         );
         for (Subject subject : inventory) {
             if (subject.getName().equalsIgnoreCase(userInput))
@@ -247,7 +265,7 @@ public class MazeGame implements GameInterface {
                 "",
                 new ArrayList<String>(Arrays.asList("NORTH","EAST","SOUTH","WEST")),
                 "Please enter a valid direction: NORTH, EAST, SOUTH, WEST",
-                scanner);
+                userInputProvider);
         switch (direction) {
             case "NORTH":
                 return NORTH;
@@ -262,7 +280,7 @@ public class MazeGame implements GameInterface {
         }
     }
 
-    private void showPossibleDirections(MazeWalkerPlayer player) {
+    private void showPossibleDirections(MazePlayer player) {
         player.getCurrentLocation().getDoors().forEach(((direction, door) ->  System.out.println(direction)));
     }
 
