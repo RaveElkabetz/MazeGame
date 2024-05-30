@@ -82,7 +82,7 @@ public class MazeGameMap implements GameMapInterface {
                         new Bars("This bars must be unlocked in order to get out!",WEST))));
 
         mazeRooms.get("G").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Dog("There is a giant and scary dog! it looks like he is blocking the Northen door..." )
+                Arrays.asList(new Dog("There is a giant and scary dog! it looks like he is blocking the Northen door..." ,NORTH)
 
                         )));
 
