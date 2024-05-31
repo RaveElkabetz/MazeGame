@@ -13,7 +13,6 @@ import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
 import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.abstractClasses.Subject;
-import com.assignment.MazeGame.utils.UserDialogSystemOutputUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,24 +25,21 @@ public class MazeGame implements Game {
 
     private final UserInputProvider userInputProvider;
 
-   // private final HashMap<String, MazePlayer> players = new HashMap<>();
-
     private PlayerDataStore playerDataStore;
 
     private final OutputProvider outputProvider;
 
     private final UserDialogUtils userDialogUtils;
 
+    private GameMap gameMap;
 
 
-    private MazeGameMap mazeGameMap ;
-
-
-    public MazeGame(UserInputProvider userInputProvider, OutputProvider outputProvider, UserDialogUtils userDialogUtils, PlayerDataStore playerDataStore) {
+    public MazeGame(UserInputProvider userInputProvider, OutputProvider outputProvider, UserDialogUtils userDialogUtils, PlayerDataStore playerDataStore, GameMap gameMap) {
         this.userInputProvider = userInputProvider;
         this.outputProvider = outputProvider;
         this.playerDataStore = playerDataStore;
         this.userDialogUtils = userDialogUtils;
+        this.gameMap = gameMap;
     }
 
 
@@ -53,8 +49,8 @@ public class MazeGame implements Game {
             printGreatingsToUser();
 
             boolean gameOn = true;
-            mazeGameMap = new MazeGameMap(new HashMapMazeRoomDataStore());
-            mazeGameMap.initMap();
+            //gameMap = new MazeGameMap(new HashMapMazeRoomDataStore());
+            gameMap.initMap();
             String playerName = addNewPlayerToTheMaze();
             outputProvider.stringOutputToUser(playerName + ", are now entered the mysterious maze, use your objects around you wisely to finish the maze.... ");
             mainGameLoop(playerName);
@@ -89,7 +85,7 @@ public class MazeGame implements Game {
                 "Please enter non empty string",
                 userInputProvider);
 
-        this.playerDataStore.put(input, new MazePlayer(input, (MazeRoom) mazeGameMap.getRoom("A"),outputProvider));
+        this.playerDataStore.put(input, new MazePlayer(input, (MazeRoom) gameMap.getRoom("A"),outputProvider));
         return input;
 
     }
