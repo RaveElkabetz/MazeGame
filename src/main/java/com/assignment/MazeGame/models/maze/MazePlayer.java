@@ -3,6 +3,7 @@ package com.assignment.MazeGame.models.maze;
 import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.intefaces.Player;
+import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
 import com.assignment.MazeGame.models.subjects.Dog;
 import com.assignment.MazeGame.models.subjects.Guard;
 import com.assignment.MazeGame.models.enums.Direction;
@@ -18,17 +19,19 @@ public class MazePlayer implements Player {
     private String nickname;
     private MazeRoom currentLocation;
     private ArrayList<Subject> inventory = new ArrayList<Subject>();
+    private OutputProvider outputProvider;
 
-    public MazePlayer(String nickname, MazeRoom startRoom) {
+    public MazePlayer(String nickname, MazeRoom startRoom, OutputProvider outputProvider) {
         this.nickname = nickname;
         this.currentLocation = startRoom;
+        this.outputProvider = outputProvider;
     }
 
 
 
     @Override
     public void examineSubject(Subject subject) {
-        System.out.println("examining subject...");
+        outputProvider.stringOutputToUser("examining subject...");
     }
 
     @Override
@@ -40,9 +43,9 @@ public class MazePlayer implements Player {
             //moving to next room by updating the current location after checking if the bars are open
             currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
             checkIfRoomContainsAGuard();
-            System.out.println("You have moved rooms! ");
+            outputProvider.stringOutputToUser("You have moved rooms! ");
         } else {//in case the user chose door direction that doesn't exist in this room.
-            System.out.println("There isn't any door in this direction!");
+            outputProvider.stringOutputToUser("There isn't any door in this direction!");
         }
     }
 
@@ -54,6 +57,7 @@ public class MazePlayer implements Player {
         }
     }
 
+    //todo make this generic
     private void checkIfThereIsADogBlocking(Direction direction) throws DoorUnPassableException {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Dog) {
@@ -96,7 +100,7 @@ public class MazePlayer implements Player {
 
     @Override
     public void openSubject(Subject subject) {
-        System.out.println("opened a subject");
+        outputProvider.stringOutputToUser("opened a subject");
     }
 
     @Override

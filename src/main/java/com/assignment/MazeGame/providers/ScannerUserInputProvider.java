@@ -1,6 +1,6 @@
 package com.assignment.MazeGame.providers;
 
-import com.assignment.MazeGame.intefaces.providerInterfaces.UserInputProvider;
+import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
 import jakarta.annotation.PreDestroy;
 
 import java.util.Scanner;

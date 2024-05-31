@@ -9,16 +9,4 @@ public class Bars extends BlockableSubject {
         super("Bars", description, direction);
     }
 
-/*    @Override
-    public void open() {
-        this.open = true;
-    }
-
-    public boolean isOpen() {
-        return this.open;
-    }*/
-
-/*    public Direction getDirection() {
-        return direction;
-    }*/
 }

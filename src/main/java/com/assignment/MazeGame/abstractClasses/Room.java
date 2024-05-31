@@ -1,9 +1,11 @@
 package com.assignment.MazeGame.abstractClasses;
 
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
+import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
 import com.assignment.MazeGame.models.Door;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.utils.InputOutputUtils;
+import com.assignment.MazeGame.utils.UserDialogSystemOutputUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +20,9 @@ public abstract class Room /*implements com.assignment.MazeGame.intefaces.Room*/
     private Map<Direction, Door> doors = new HashMap<Direction, Door>();
 
     private ArrayList<Subject> subjectsInTheRoom = new ArrayList<>();
+
+    @Autowired
+    OutputProvider outputProvider;
 
 
 
@@ -49,7 +54,7 @@ public abstract class Room /*implements com.assignment.MazeGame.intefaces.Room*/
 
     public void printAvailableSubjects() throws NoSuchSubjectException {
         if (!subjectsInTheRoom.isEmpty()) {
-            InputOutputUtils.printAvailableObjects(subjectsInTheRoom);
+            outputProvider.printAvailableObjects(subjectsInTheRoom);
         } else {
             throw new NoSuchSubjectException("There isn't any subjects in this room!");
         }

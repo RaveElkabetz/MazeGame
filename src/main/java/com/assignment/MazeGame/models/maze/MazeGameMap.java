@@ -18,12 +18,10 @@ import static com.assignment.MazeGame.models.enums.Direction.*;
 
 public class MazeGameMap implements GameMap {
 
-    //private  Map<String, MazeRoom> mazeRooms ;
     
     private final MazeRoomDataStore mazeRoomDataStore;
 
-    public MazeGameMap(/*Map<String, MazeRoom> mazeRooms*/MazeRoomDataStore mazeRoomDataStore) {
-        //this.mazeRooms = mazeRooms;
+    public MazeGameMap(MazeRoomDataStore mazeRoomDataStore) {
         this.mazeRoomDataStore = mazeRoomDataStore;
     }
 

@@ -1,18 +1,18 @@
 package com.assignment.MazeGame.utils;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.intefaces.providerInterfaces.UserInputProvider;
+import com.assignment.MazeGame.intefaces.UI.UserDialog.UserDialogUtils;
+import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class InputOutputUtils {
+@Component
+public class UserDialogSystemOutputUtils implements UserDialogUtils {
 
-    public static boolean isValidInput(String input) {
-        return input != null && !input.isEmpty();
-    }
 
-    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, String goodInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+    @Override
+    public <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, String goodInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         String userInput;
         if (!qestion.isEmpty()) {
             System.out.println(qestion);
@@ -37,15 +37,18 @@ public class InputOutputUtils {
     }
 
 
-    public static <T> String userDialogWithInput( ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+    @Override
+    public <T> String userDialogWithInput( ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         return userDialogWithInput("", goodInputsOptions,badInputResponse, "", userInputProvider);
     }
 
-    public static <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+    @Override
+    public <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         return userDialogWithInput(qestion, goodInputsOptions,badInputResponse, "", userInputProvider);
     }
 
-    public static String userDialogWithInput(String qestion, String goodInputResponse, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+    @Override
+    public String userDialogWithInput(String qestion, String goodInputResponse, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
         String userInput;
         if (!qestion.isEmpty()) System.out.println(qestion);
         while (true) {
@@ -63,7 +66,5 @@ public class InputOutputUtils {
         return userInput;
     }
 
-    public static  <T> void printAvailableObjects(List<T> objects) {
-        objects.forEach(Object-> System.out.println(Object.toString()));
-    }
+
 }

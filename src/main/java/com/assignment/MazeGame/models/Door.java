@@ -6,7 +6,6 @@ import com.assignment.MazeGame.models.subjects.Bars;
 public class Door implements com.assignment.MazeGame.intefaces.Door {
     private final String description;
     private final Room connectedRoom;
-    private final String unlockKey = "";
     private boolean open = true;
     private Bars bars;
 
