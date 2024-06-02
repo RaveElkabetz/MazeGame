@@ -1,9 +1,8 @@
 package com.assignment.MazeGame.abstractClasses;
 
 
-import com.assignment.MazeGame.intefaces.behaviorInterfaces.UseOn;
 
-public abstract class Subject implements UseOn {
+public abstract class Subject {
     private final String name;
     private final String description;
     private boolean examined = false;
@@ -31,7 +30,6 @@ public abstract class Subject implements UseOn {
     }
 
 
-    @Override
     public void useOn(Subject subject) {
         System.out.println("this subject cant be used on with like that.");;
     }

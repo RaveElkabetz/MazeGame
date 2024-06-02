@@ -1,11 +1,8 @@
 package com.assignment.MazeGame.models.maze;
 
-import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
-import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.Exceptions.NoSuchDirectionException;
-import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
+import com.assignment.MazeGame.Exceptions.*;
+import com.assignment.MazeGame.abstractClasses.Game;
 import com.assignment.MazeGame.intefaces.*;
-import com.assignment.MazeGame.datastores.HashMapMazeRoomDataStore;
 import com.assignment.MazeGame.abstractClasses.Room;
 import com.assignment.MazeGame.intefaces.UI.UserDialog.UserDialogUtils;
 import com.assignment.MazeGame.intefaces.behaviorInterfaces.CanBeExaminedSubject;
@@ -20,35 +17,15 @@ import java.util.Arrays;
 import static com.assignment.MazeGame.models.enums.Direction.*;
 
 
-public class MazeGame implements Game {
-
-
-    private final UserInputProvider userInputProvider;
-
-    private PlayerDataStore playerDataStore;
-
-    private final OutputProvider outputProvider;
-
-    private final UserDialogUtils userDialogUtils;
-
-    private GameMap gameMap;
-
-
+public class MazeGame extends Game {
     public MazeGame(UserInputProvider userInputProvider, OutputProvider outputProvider, UserDialogUtils userDialogUtils, PlayerDataStore playerDataStore, GameMap gameMap) {
-        this.userInputProvider = userInputProvider;
-        this.outputProvider = outputProvider;
-        this.playerDataStore = playerDataStore;
-        this.userDialogUtils = userDialogUtils;
-        this.gameMap = gameMap;
+        super(userInputProvider, outputProvider,userDialogUtils,playerDataStore,gameMap);
     }
-
 
     @Override
     public void start() {
         try {
             printGreatingsToUser();
-
-            boolean gameOn = true;
             //gameMap = new MazeGameMap(new HashMapMazeRoomDataStore());
             gameMap.initMap();
             String playerName = addNewPlayerToTheMaze();
@@ -74,8 +51,8 @@ public class MazeGame implements Game {
                 "   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝"
                 );
         Thread.sleep(1000);
-        outputProvider.stringOutputToUser("Welcome to the Maze Game!");
-        outputProvider.stringOutputToUser("Enter EXIT command in every stage to close the game.");
+        outputProvider.stringOutputToUser("Welcome to the Maze Game!" +
+                "\n Enter EXIT command in every stage to close the game. ");
     }
 
     public String addNewPlayerToTheMaze() throws EndingGameExecption {
@@ -90,21 +67,6 @@ public class MazeGame implements Game {
 
     }
 
-
-    @Override
-    public void saveGame() {
-
-    }
-
-    @Override
-    public void loadGame() {
-
-    }
-
-    @Override
-    public void closeGame() {
-        outputProvider.stringOutputToUser("Exiting the game, see you next time!");
-    }
 
     @Override
     public void mainGameLoop(String playerNickName) throws EndingGameExecption {
@@ -137,9 +99,6 @@ public class MazeGame implements Game {
 
 
 
-
-
-
                     default:
                         outputProvider.stringOutputToUser("No valid input! Enter `H` for help");
 
@@ -167,7 +126,7 @@ public class MazeGame implements Game {
 
         //creating new list of subjects that is combined with inventory and room subjects
         ArrayList<Subject> inventoryAndRoomSubjectList = new ArrayList<>(player.getInventory());
-        inventoryAndRoomSubjectList.addAll(player.getCurrentLocation().getRoomSubjects());
+        inventoryAndRoomSubjectList.addAll(player.getCurrentLocation().getRoomSubjectsAvilableForUsage());
 
         // use the inventory subject on other subject
         outputProvider.stringOutputToUser("On which subject to use it?:");
@@ -192,7 +151,7 @@ public class MazeGame implements Game {
 
     private void examineSubject(MazePlayer player) throws NoSuchSubjectException, EndingGameExecption {
         outputProvider.stringOutputToUser("choose the the subject in this room you want to examine:");
-        player.getCurrentLocation().printAvailableSubjects();
+        outputProvider.printAvailableObjects(player.getCurrentLocation().getRoomSubjectsAvilableForUsage());
         Subject subject = getSubjectInTheRoomToExamine(player.getCurrentLocation().getRoomSubjects());
         if (subject instanceof CanBeExaminedSubject subjectToExamine) {
             player.addSubjectToInventory(subjectToExamine.examine());
@@ -208,14 +167,13 @@ public class MazeGame implements Game {
         player.move(direction);
     }
 
-    private void printCurrentLocationAndSubjectsInRoom(MazePlayer player) {
+    private void printCurrentLocationAndSubjectsInRoom(MazePlayer player) throws NoSuchSubjectException {
         Room currentLocation = player.getCurrentLocation();
         outputProvider.stringOutputToUser(currentLocation.getDescription());
         if (!currentLocation.getRoomSubjects().isEmpty()) {
             outputProvider.stringOutputToUser("The objects in this room are: " );
             outputProvider.printAvailableObjects(player.getCurrentLocation().getRoomSubjects());
         }
-
     }
 
     private void showcaseInventory(MazePlayer player) throws NoSuchSubjectException {
@@ -262,7 +220,7 @@ public class MazeGame implements Game {
         String direction = userDialogUtils.userDialogWithInput(
                 "",
                 new ArrayList<String>(Arrays.asList("NORTH","EAST","SOUTH","WEST")),
-                "Please enter a valid direction: NORTH, EAST, SOUTH, WEST",
+                "Please enter a valid direction: NORTH, EAST, SOUTH, WEST. use CAPITAL LETTERS for the directions.",
                 userInputProvider);
         switch (direction) {
             case "NORTH":

@@ -1,6 +1,7 @@
 package com.assignment.MazeGame;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
+import com.assignment.MazeGame.Exceptions.GoBackException;
 import com.assignment.MazeGame.intefaces.PlayerDataStore;
 import com.assignment.MazeGame.models.maze.MazeGame;
 import com.assignment.MazeGame.models.maze.MazeGameMap;
@@ -49,7 +50,7 @@ public class MazeGameTests {
     }
 
     @Test
-    void testAddNewPlayerToTheMaze() throws EndingGameExecption {
+    void testAddNewPlayerToTheMaze() throws EndingGameExecption, GoBackException {
         String nickname = "test_nickname";
         MazeRoom mazeRoom = new MazeRoom("the starting room"); // replace with actual MazeRoom instantiation
         when(inputOutputUtils.userDialogWithInput(anyString(), anyString(), anyString(),userInputProvider)).thenReturn(nickname);

@@ -9,12 +9,14 @@ import com.assignment.MazeGame.models.subjects.Guard;
 import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.Door;
 import com.assignment.MazeGame.models.subjects.*;
+import com.assignment.MazeGame.providers.SystemOutputProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.assignment.MazeGame.models.enums.Direction.*;
+import static com.assignment.MazeGame.utils.Constant.*;
 
 public class MazeGameMap implements GameMap {
 
@@ -28,15 +30,15 @@ public class MazeGameMap implements GameMap {
     @Override
     public void initMap() {
         //inserting the maze rooms to the hashmap
-        this.mazeRoomDataStore.put("A", new MazeRoom("You are in the starting room."));
-        this.mazeRoomDataStore.put("B", new MazeRoom("This room has only one door."));
-        this.mazeRoomDataStore.put("C", new MazeRoom("This room has 2 doors."));
-        this.mazeRoomDataStore.put("D", new MazeRoom("This room has 3 doors."));
-        this.mazeRoomDataStore.put("E", new MazeRoom("This room has 2 doors."));
-        this.mazeRoomDataStore.put("F", new MazeRoom("This room has 2 doors."));
-        this.mazeRoomDataStore.put("G", new MazeRoom("This room has 4 doors, in all 4 directions. choose wisely..."));
-        this.mazeRoomDataStore.put("H", new MazeRoom("This room has one door only."));
-        this.mazeRoomDataStore.put("I", new MazeRoom("Congratulations! you have successfully completed the MAZE."));
+        this.mazeRoomDataStore.put("A", new MazeRoom(STARTING_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("B", new MazeRoom(B_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("C", new MazeRoom(C_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("D", new MazeRoom(D_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("E", new MazeRoom(E_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("F", new MazeRoom(F_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("G", new MazeRoom(G_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("H", new MazeRoom(H_ROOM_DESCRIPTION));
+        this.mazeRoomDataStore.put("I", new MazeRoom(LAST_ROOM_DESCRIPTION));
 
         //initializing the doors for all the rooms
         mazeRoomDataStore.get("A").setDoors(new HashMap<Direction, Door>() {{
@@ -81,25 +83,19 @@ public class MazeGameMap implements GameMap {
         }});
 
         mazeRoomDataStore.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Bed(
-                        "This is just an old and stinky bed...wait! there is something under the bed!\n" +
-                                "you found a pin! its been added to your inventory.",
-                                new Pin("Long ,thin and very strong pin.")
-                ),
-                        new Bars("This bars must be unlocked in order to get out!",WEST))));
+                Arrays.asList(new Bed(BED_DESCRIPTION,new Pin(PIN_DESCRIPTION)),
+                              new Bars(BARS_DESCRIPTION,WEST))));
 
         mazeRoomDataStore.get("G").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Dog("There is a giant and scary dog! it looks like he is blocking the Northen door..." ,NORTH)
-
-                        )));
+                Arrays.asList(new Dog(DOG_DESCRIPTION,NORTH))));
 
         mazeRoomDataStore.get("F").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Bowl("This is a bowl. It looks like there is some Bonzo in it! ", new Bonzo("Wonder what we can do with this dog food?") )
+                Arrays.asList(new Bowl(BOWL_DESCRIPTION, new Bonzo(BONZO_DESCRIPTION, new SystemOutputProvider()) )
 
                 )));
 
-        mazeRoomDataStore.get("F").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Guard("The guard has found and caught you! you have lost the game ") )
+        mazeRoomDataStore.get("H").setSubjectsInTheRoom(new ArrayList<Subject>(
+                Arrays.asList(new Guard(GUARD_DESCRIPTION))
                 ));
 
     }

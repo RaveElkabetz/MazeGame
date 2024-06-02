@@ -8,7 +8,6 @@ import com.assignment.MazeGame.abstractClasses.Subject;
 public interface Player {
     public void examineSubject(Subject subject);
     public void move(Direction direction) throws DoorUnPassableException, EndingGameExecption;
-    public void openSubject(Subject subject);
-    public String whereIAm();
+
     public void addSubjectToInventory(Subject subject);
 }
