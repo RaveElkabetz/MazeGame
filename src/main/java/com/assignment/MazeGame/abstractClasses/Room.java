@@ -1,28 +1,21 @@
 package com.assignment.MazeGame.abstractClasses;
 
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
-import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
 import com.assignment.MazeGame.models.Door;
 import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.utils.UserDialogSystemOutputUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Room /*implements com.assignment.MazeGame.intefaces.Room*/ {
+public abstract class Room  {
 
-   // private static int roomCount = 0;
 
     private final String description;
 
     private Map<Direction, Door> doors = new HashMap<Direction, Door>();
 
     private ArrayList<Subject> subjectsInTheRoom = new ArrayList<>();
-
-    @Autowired
-    OutputProvider outputProvider;
 
 
 
@@ -44,21 +37,23 @@ public abstract class Room /*implements com.assignment.MazeGame.intefaces.Room*/
     }
 
 
-    public ArrayList<Subject> getRoomSubjects() {
-        return this.subjectsInTheRoom;
-    }
-
     public void setSubjectsInTheRoom(ArrayList<Subject> subjectsInTheRoom) {
         this.subjectsInTheRoom = subjectsInTheRoom;
     }
 
-    public void printAvailableSubjects() throws NoSuchSubjectException {
+    public ArrayList<Subject> getRoomSubjectsAvilableForUsage() throws NoSuchSubjectException {
         if (!subjectsInTheRoom.isEmpty()) {
-            outputProvider.printAvailableObjects(subjectsInTheRoom);
+            return subjectsInTheRoom;
         } else {
             throw new NoSuchSubjectException("There isn't any subjects in this room!");
         }
-    }
+       // return subjectsInTheRoom;
+        }
+
+    public ArrayList<Subject> getRoomSubjects()  {
+        return subjectsInTheRoom;}
+
+
 
     @Override
     public String toString() {

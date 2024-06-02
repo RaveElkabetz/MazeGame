@@ -3,11 +3,10 @@ package com.assignment.MazeGame.utils;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.intefaces.UI.UserDialog.UserDialogUtils;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component
+
 public class UserDialogSystemOutputUtils implements UserDialogUtils {
 
 
@@ -23,6 +22,9 @@ public class UserDialogSystemOutputUtils implements UserDialogUtils {
                 if (userInput.equalsIgnoreCase("EXIT")) {
                     throw new EndingGameExecption();
                 }
+/*                if (userInput.equalsIgnoreCase("b") | userInput.equalsIgnoreCase("back") ) {
+                    throw new GoBackException();
+                }*/
                 if (!goodInputsOptions.isEmpty()) {
                     for (T goodInput : goodInputsOptions) {
                         if (userInput.equalsIgnoreCase(goodInput.toString())) {
@@ -63,6 +65,9 @@ public class UserDialogSystemOutputUtils implements UserDialogUtils {
         if (userInput.equalsIgnoreCase("EXIT")) {
             throw new EndingGameExecption();
         }
+/*        if (userInput.equalsIgnoreCase("b") | userInput.equalsIgnoreCase("back") ) {
+            throw new GoBackException();
+        }*/
         return userInput;
     }
 

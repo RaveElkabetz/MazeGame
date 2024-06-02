@@ -12,7 +12,8 @@ import com.assignment.MazeGame.models.subjects.Bars;
 import com.assignment.MazeGame.abstractClasses.Subject;
 
 import java.util.ArrayList;
-import java.util.Optional;
+
+import static com.assignment.MazeGame.utils.Constant.LAST_ROOM_DESCRIPTION;
 
 
 public class MazePlayer implements Player {
@@ -43,9 +44,17 @@ public class MazePlayer implements Player {
             //moving to next room by updating the current location after checking if the bars are open
             currentLocation = (MazeRoom) currentLocation.getDoors().get(direction).getConnectedRoom();
             checkIfRoomContainsAGuard();
+            checkIfItsTheFinalRoom();
             outputProvider.stringOutputToUser("You have moved rooms! ");
         } else {//in case the user chose door direction that doesn't exist in this room.
             outputProvider.stringOutputToUser("There isn't any door in this direction!");
+        }
+    }
+
+    private void checkIfItsTheFinalRoom() throws EndingGameExecption {
+        if (currentLocation.getDescription().equals(LAST_ROOM_DESCRIPTION)) {
+            throw new EndingGameExecption(LAST_ROOM_DESCRIPTION);
+
         }
     }
 
@@ -61,8 +70,8 @@ public class MazePlayer implements Player {
     private void checkIfThereIsADogBlocking(Direction direction) throws DoorUnPassableException {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Dog) {
-                if (((Dog) subject).isHungry() && ((Dog) subject).getWhichDirectionIsBlocked() == direction)
-                    throw new DoorUnPassableException("The dog is hungry and angry and wont move!");
+                if (((Dog) subject).isBlocking() && ((Dog) subject).getWhichDirectionIsBlocked() == direction)
+                    throw new DoorUnPassableException("The dog is hungry and angry and wont move from this door!");
             }
         }
     }
@@ -76,18 +85,18 @@ public class MazePlayer implements Player {
         }
     }
 
-    private Optional<Bars> checkIfRoomHasBars(Direction direction) {
+/*    private Optional<Bars> checkIfRoomHasBars(Direction direction) {
        Optional<Bars> bars = Optional.empty();
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Bars) {
-                if (/*((Bars) subject).isOpen() &&*/ ((Bars) subject).getWhichDirectionIsBlocked() == direction)
+                if (*//*((Bars) subject).isOpen() &&*//* ((Bars) subject).getWhichDirectionIsBlocked() == direction)
                     bars = Optional.of((Bars) subject);
             }
         }
         return bars;
-    }
+    }*/
 
-    private boolean checkIfBarsAreOpen(Direction direction) {
+/*    private boolean checkIfBarsAreOpen(Direction direction) {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Bars) {
                 //((Bars) subject).
@@ -96,18 +105,14 @@ public class MazePlayer implements Player {
             }
         }
         return false;
-    }
+    }*/
 
-    @Override
-    public void openSubject(Subject subject) {
-        outputProvider.stringOutputToUser("opened a subject");
-    }
 
-    @Override
-    public String whereIAm() {
-        return this.currentLocation.getDescription();
 
-    }
+
+
+
+
 
     @Override
     public void addSubjectToInventory(Subject subject) {
