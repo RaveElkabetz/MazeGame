@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-06-02T18:45:57.491Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="uao11bDmZml5Zow6COLr" version="24.4.13" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-02T19:24:25.776Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="SN-JK9npWgMLHBL_BXuD" version="24.4.13" type="github">
   <diagram name="Page-1" id="AXgZJmAVB9x7k6VPBPpo">
-    <mxGraphModel dx="1037" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1659" dy="885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -142,109 +142,190 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-44" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MazeGame&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addNewPlayerToMaze(): String&lt;br&gt;+ printGreatingsToUser(): void&lt;br&gt;+ useAvailableSubject(MazePlayer): void&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getSubjectAndUseOn(ArrayList&amp;lt;Subject&amp;gt;,Subject): void&lt;br&gt;+ examineSubject(Player): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ movePlayer(MazePlayer): void&lt;br&gt;+ printCurrentLocationAndSubjectsInRoom(MazePlayer): void&lt;br&gt;+ showcaseInventory(MazePlayer): void&lt;br&gt;+ getSubjectInTheRoomToExamine(ArrayList&amp;lt;Subject&amp;gt;): Subject&lt;br&gt;+ getSubjectToUseWithFromInventory(MazePlayer): Subject&lt;br&gt;+ getDirectionFromPlayer(): Direction&lt;br&gt;+ showPossibleDirections(MazePlayer): void&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="30" y="1156" width="360" height="220" as="geometry" />
+          <mxGeometry x="450" y="1156" width="360" height="220" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-45" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Game (abstract)&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- gameMap: GameMap&lt;br&gt;- outoutProvider: OutputProvider&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- playerDataStore: PlayerDataStore&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- userDialogUtils: UserDialogUtils&lt;br&gt;- userInputProvider: UserInputProvider&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ start(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ saveGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ loadGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ closeGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ start(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ mainGameLoop(String): void &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="80" y="856" width="220" height="230" as="geometry" />
+          <mxGeometry x="500" y="856" width="220" height="230" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-46" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;exitX=0.463;exitY=-0.003;exitDx=0;exitDy=0;entryX=0.532;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-44" target="vj8tvU9fs9zhO4dunw9U-47">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="209.44" y="1156" as="sourcePoint" />
-            <mxPoint x="210.5499999999999" y="1101.88" as="targetPoint" />
+            <mxPoint x="629.44" y="1156" as="sourcePoint" />
+            <mxPoint x="630.55" y="1101.88" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-47" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Game (abstract)&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- gameMap: GameMap&lt;br&gt;- outoutProvider: OutputProvider&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- playerDataStore: PlayerDataStore&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- userDialogUtils: UserDialogUtils&lt;br&gt;- userInputProvider: UserInputProvider&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ start(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ saveGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ loadGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ closeGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ start(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ mainGameLoop(String): void &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="80" y="856" width="220" height="230" as="geometry" />
+          <mxGeometry x="500" y="856" width="220" height="230" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-52" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ScannerUserInputProvider&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- scanner: Scanner&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- closeScanner()&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="410" y="1286" width="170" height="90" as="geometry" />
+          <mxGeometry x="830" y="1286" width="170" height="90" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-55" value="" style="endArrow=none;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=0.999;entryY=0.394;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-52" target="vj8tvU9fs9zhO4dunw9U-44">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="250" y="1556" as="sourcePoint" />
-            <mxPoint x="300" y="1506" as="targetPoint" />
+            <mxPoint x="670" y="1556" as="sourcePoint" />
+            <mxPoint x="720" y="1506" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="495" y="1242" />
+              <mxPoint x="915" y="1242" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-56" value="getSubjectsAndUseOn()-&amp;gt;useOn()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="400" y="1246" width="210" height="30" as="geometry" />
+          <mxGeometry x="820" y="1246" width="210" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-57" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UserDialogSystemOutputUtils&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- userDialogWithInput(..)&lt;br&gt;...&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1536" width="180" height="90" as="geometry" />
+          <mxGeometry x="460" y="1536" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-58" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;br&gt;&lt;/i&gt;&lt;b&gt;UserInputProvider&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getStringInput(): String&lt;br&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="454.1" y="1126" width="190" height="80" as="geometry" />
+          <mxGeometry x="874.1" y="1126" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-59" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.624;exitY=0.016;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.326;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-52" target="vj8tvU9fs9zhO4dunw9U-58">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="420" y="1276" as="sourcePoint" />
-            <mxPoint x="580" y="1276" as="targetPoint" />
+            <mxPoint x="840" y="1276" as="sourcePoint" />
+            <mxPoint x="1000" y="1276" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-60" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;UserDialogUtils&lt;br&gt;&lt;/b&gt;&lt;/i&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ userDialogWithInput(&amp;lt;T&amp;gt;): String&lt;br&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1416" width="200" height="80" as="geometry" />
+          <mxGeometry x="460" y="1416" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-61" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.446;entryY=1.028;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-57" target="vj8tvU9fs9zhO4dunw9U-60">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="120.5" y="1564" as="sourcePoint" />
-            <mxPoint x="120" y="1506" as="targetPoint" />
+            <mxPoint x="540.5" y="1564" as="sourcePoint" />
+            <mxPoint x="540" y="1506" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-62" value="" style="endArrow=none;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-57">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="480" y="1466" as="sourcePoint" />
-            <mxPoint x="250" y="1376" as="targetPoint" />
+            <mxPoint x="900" y="1466" as="sourcePoint" />
+            <mxPoint x="670" y="1376" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="250" y="1580" />
+              <mxPoint x="670" y="1580" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-63" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MazeGameMap&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- mazeRoomDataStore: Scanner&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- closeScanner()&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="990" width="180" height="90" as="geometry" />
+          <mxGeometry x="780" y="990" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-64" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.866;exitY=1.002;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-47">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="270" y="1136" as="sourcePoint" />
-            <mxPoint x="454.1" y="1136" as="targetPoint" />
+            <mxPoint x="690" y="1136" as="sourcePoint" />
+            <mxPoint x="874.1" y="1136" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="270" y="1136" />
+              <mxPoint x="690" y="1136" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-66" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.004;exitY=0.851;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.02;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-47" target="vj8tvU9fs9zhO4dunw9U-60">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="130" y="1386" as="sourcePoint" />
-            <mxPoint x="20" y="1416" as="targetPoint" />
+            <mxPoint x="550" y="1386" as="sourcePoint" />
+            <mxPoint x="440" y="1416" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="20" y="1052" />
-              <mxPoint x="20" y="1458" />
+              <mxPoint x="440" y="1052" />
+              <mxPoint x="440" y="1458" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-67" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;GameMap&lt;br&gt;&lt;/b&gt;&lt;/i&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ initMap(): &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getRoom(String): Room&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="350" y="870" width="190" height="80" as="geometry" />
+          <mxGeometry x="770" y="870" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-68" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=-0.021;entryY=0.475;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.014;exitY=0.228;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-47" target="vj8tvU9fs9zhO4dunw9U-67">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="470" y="970" as="sourcePoint" />
-            <mxPoint x="630" y="970" as="targetPoint" />
+            <mxPoint x="890" y="970" as="sourcePoint" />
+            <mxPoint x="1050" y="970" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-69" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-63" target="vj8tvU9fs9zhO4dunw9U-67">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="445" y="990" as="sourcePoint" />
-            <mxPoint x="444.75" y="950" as="targetPoint" />
+            <mxPoint x="865" y="990" as="sourcePoint" />
+            <mxPoint x="864.75" y="950" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-71" value="" style="endArrow=none;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=0;entryY=0.444;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.832;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-44" target="vj8tvU9fs9zhO4dunw9U-63">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="350" y="1130" as="sourcePoint" />
-            <mxPoint x="400" y="1080" as="targetPoint" />
+            <mxPoint x="770" y="1130" as="sourcePoint" />
+            <mxPoint x="820" y="1080" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="330" y="1030" />
+              <mxPoint x="750" y="1030" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-72" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HashMapMazeRoomDataStore&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- rooms: Map&amp;lt;String, MazeRoom&amp;gt; [0..*]&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;+ get(key: String): MazeRoom&lt;br&gt;+ put(key: String, value: Room)&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="219.1" y="2076" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-73" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HashMapSubjectDataStore&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- subjects: Map&amp;lt;String, Subject&amp;gt; [0..*]&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;+ get(key: String): Subject&lt;br&gt;+ put(key: String, value: Subject&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;)&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="739.1" y="2071" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-74" value="«interface»&lt;br&gt;&lt;b&gt;MazeRoomDataStore&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="294.1" y="1986" width="130" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-75" value="«interface»&lt;br&gt;&lt;b&gt;RoomDataStore&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="294.1" y="1880" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-76" value="«interface»&lt;br&gt;&lt;b&gt;DataStore&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="534.1" y="1790" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-77" value="«interface»&lt;br&gt;&lt;div&gt;&lt;b&gt;SubjectDataStore&lt;/b&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="794.1" y="1945" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-78" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.532;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-74">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="358.85" y="1996" as="sourcePoint" />
+            <mxPoint x="358.85" y="1930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-79" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;exitX=0.446;exitY=0.01;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-75" target="vj8tvU9fs9zhO4dunw9U-76">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="353.45000000000005" y="1880" as="sourcePoint" />
+            <mxPoint x="353.20000000000005" y="1824" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="353.1" y="1815" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-80" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=0.344;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-72" target="vj8tvU9fs9zhO4dunw9U-74">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="359.6" y="2075" as="sourcePoint" />
+            <mxPoint x="358.6" y="2037" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-81" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-73" target="vj8tvU9fs9zhO4dunw9U-77">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="838.2" y="2071" as="sourcePoint" />
+            <mxPoint x="838.2" y="2032" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-82" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;entryX=0.988;entryY=0.404;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-77" target="vj8tvU9fs9zhO4dunw9U-76">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="859.1" y="1945" as="sourcePoint" />
+            <mxPoint x="759.1" y="1810" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="859.1" y="1810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-83" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HashMapMazePlayerDataStore&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;- players: Map&amp;lt;String, MazePlayer&amp;gt; [0..*]&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;+ get(key: String): MazePlayer&lt;br&gt;+ put(key: String, value: MazePlayer)&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="479.1" y="2076" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-84" value="«interface»&lt;br&gt;&lt;b&gt;MazePlayerDataStore&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="534.1" y="1972" width="130" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-85" value="«interface»&lt;br&gt;&lt;b&gt;PlayerDataStore&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="534.1" y="1880" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-86" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="598.95" y="1972" as="sourcePoint" />
+            <mxPoint x="599.1" y="1930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-87" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.464;exitY=-0.02;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-83">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="588.7" y="2045" as="sourcePoint" />
+            <mxPoint x="590.1" y="2025" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-88" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-85" target="vj8tvU9fs9zhO4dunw9U-76">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="29.099999999999994" y="1960" as="sourcePoint" />
+            <mxPoint x="189.1" y="1960" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
