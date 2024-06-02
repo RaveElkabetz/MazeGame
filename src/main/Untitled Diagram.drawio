@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-02T19:45:53.682Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="On8vjsoEowYJqK-hMxBy" version="24.4.13" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-02T19:58:26.246Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="1zwdf5DM-XF_HE0zI1Od" version="24.4.13" type="github">
   <diagram name="Page-1" id="AXgZJmAVB9x7k6VPBPpo">
     <mxGraphModel dx="1659" dy="885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -329,40 +329,52 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-90" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Room(abstract)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- description: String&lt;br&gt;- doors:&amp;nbsp; Map&amp;lt;Direction, Door&amp;gt; [0..*]&lt;br&gt;- subjectsInTheRoom: ArrayList&amp;lt;Subject&amp;gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getRoomSubjectsAvilableForUsage(): ArrayList&amp;lt;Subject&amp;gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="50" y="940" width="340" height="140" as="geometry" />
+          <mxGeometry x="60" y="1176" width="340" height="140" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-91" value="MazeRoom" style="html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="165" y="1150" width="110" height="50" as="geometry" />
+          <mxGeometry x="175" y="1386" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-92" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=1;labelBackgroundColor=none;strokeColor=#E07A5F;fontColor=default;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-91" target="vj8tvU9fs9zhO4dunw9U-90">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="214.60000000000002" y="1150" as="sourcePoint" />
-            <mxPoint x="214.60000000000002" y="1084" as="targetPoint" />
+            <mxPoint x="224.60000000000002" y="1386" as="sourcePoint" />
+            <mxPoint x="224.60000000000002" y="1320" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-93" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Door&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- bars: Bars [0..1]&lt;br&gt;-&amp;nbsp; connectedRoom: Room [1..4]&lt;br&gt;- description: String&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="10" y="1300" width="190" height="90" as="geometry" />
+          <mxGeometry x="20" y="1536" width="190" height="90" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-94" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-93">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="100" y="1296" as="sourcePoint" />
-            <mxPoint x="105" y="1081" as="targetPoint" />
+            <mxPoint x="110" y="1532" as="sourcePoint" />
+            <mxPoint x="115" y="1317" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-95" value="&amp;nbsp;connectedRoom" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="80" y="1270" width="150" height="30" as="geometry" />
+          <mxGeometry x="90" y="1506" width="150" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-96" value="doors" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#393C56;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1080" width="60" height="30" as="geometry" />
+          <mxGeometry x="60" y="1316" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-97" value="Subject" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
-          <mxGeometry x="240" y="1241" width="140" height="88" as="geometry" />
+          <mxGeometry x="250" y="1477" width="140" height="88" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-98" value="see previuos pages for more details" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#393C56;" vertex="1" parent="vj8tvU9fs9zhO4dunw9U-97">
           <mxGeometry y="26" width="140" height="54" as="geometry" />
         </mxCell>
         <mxCell id="vj8tvU9fs9zhO4dunw9U-99" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;fontColor=#393C56;" vertex="1" parent="vj8tvU9fs9zhO4dunw9U-97">
           <mxGeometry y="80" width="140" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-101" value="subjectsInRoom" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;exitX=0.785;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="vj8tvU9fs9zhO4dunw9U-90">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="310" y="1356" as="sourcePoint" />
+            <mxPoint x="330" y="1476" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-102" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;b&gt;&lt;br&gt;Player&lt;/b&gt;&lt;br&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ examineSubject(Subject): &lt;br&gt;+ move(Direction): &lt;br&gt;+ addSubjectToInventory(Subject):&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;strokeColor=#E07A5F;fontColor=#393C56;fillColor=#F2CC8F;" vertex="1" parent="1">
+          <mxGeometry x="110" y="820" width="200" height="109" as="geometry" />
+        </mxCell>
+        <mxCell id="vj8tvU9fs9zhO4dunw9U-103" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MazePlayer&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- nickName: String&lt;br&gt;- currentLocation: MazeRoom&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- inventory: ArrayList&amp;lt;Subject&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- outputProvider: OutputProvider&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ checkIfItsTheFinalRoom(): &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ checkIfRoomContainsAGuard(): &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ loadGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ closeGame(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ start(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ mainGameLoop(String): void &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=1;labelBackgroundColor=none;fillColor=#F2CC8F;strokeColor=#E07A5F;fontColor=#393C56;" vertex="1" parent="1">
+          <mxGeometry x="100" y="940" width="220" height="230" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
