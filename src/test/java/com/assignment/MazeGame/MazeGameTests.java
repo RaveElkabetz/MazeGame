@@ -1,28 +1,20 @@
 package com.assignment.MazeGame;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.Exceptions.GoBackException;
 import com.assignment.MazeGame.datastores.HashMapMazeRoomDataStore;
 import com.assignment.MazeGame.intefaces.GameMap;
 import com.assignment.MazeGame.intefaces.PlayerDataStore;
 import com.assignment.MazeGame.intefaces.UI.UserDialog.UserDialogUtils;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
-import com.assignment.MazeGame.intefaces.datastoreInterfaces.MazeRoomDataStore;
 import com.assignment.MazeGame.models.maze.MazeGame;
 import com.assignment.MazeGame.models.maze.MazeGameMap;
 import com.assignment.MazeGame.models.maze.MazePlayer;
 import com.assignment.MazeGame.models.maze.MazeRoom;
-import com.assignment.MazeGame.providers.ScannerUserInputProvider;
-import com.assignment.MazeGame.utils.UserDialogSystemOutputUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
