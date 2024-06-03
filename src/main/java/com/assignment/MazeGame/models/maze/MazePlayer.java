@@ -52,7 +52,8 @@ public class MazePlayer implements Player {
 
     private void checkIfItsTheFinalRoom() throws EndingGameExecption {
         if (currentLocation.getDescription().equals(LAST_ROOM_DESCRIPTION)) {
-            throw new EndingGameExecption(LAST_ROOM_DESCRIPTION);
+            outputProvider.stringOutputToUser(LAST_ROOM_DESCRIPTION);
+            throw new EndingGameExecption();
 
         }
     }
