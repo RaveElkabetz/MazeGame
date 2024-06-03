@@ -78,10 +78,12 @@ public class MazePlayer implements Player {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Bars) {
                 if (((Bars) subject).isBlocking() && ((Bars) subject).getWhichDirectionIsBlocked() == direction)
+
                     throw new DoorUnPassableException("These Bars are locked, and it blocking the way!");
             }
         }
     }
+
 
 
     @Override

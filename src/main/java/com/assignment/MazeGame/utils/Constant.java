@@ -19,6 +19,7 @@ public class Constant {
     public static final String BONZO_DESCRIPTION = "Wonder what we can do with this dog food?";
     public static final String GUARD_DESCRIPTION = "The guard has found and caught you! you have lost the game ";
 
+
     public static final String HELP_MESSAGE = "press H for help, EXIT to exit, M to move, U to use subject on other subject" +
             "\n E to examined subjet, I to inventory. Must use CAPITAL letters in this menu.";
 
@@ -29,5 +30,6 @@ public class Constant {
             "   ██║   ██╔══██║██╔══╝╚════╝██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝  \n" +
             "   ██║   ██║  ██║███████╗    ██║ ╚═╝ ██║██║  ██║███████╗███████╗\n" +
             "   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝";
+
 
 }

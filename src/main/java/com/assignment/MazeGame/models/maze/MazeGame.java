@@ -1,10 +1,12 @@
 package com.assignment.MazeGame.models.maze;
 
+
 import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
 import com.assignment.MazeGame.Exceptions.NoSuchDirectionException;
 import com.assignment.MazeGame.Exceptions.NoSuchSubjectException;
 import com.assignment.MazeGame.abstractClasses.Game;
+
 import com.assignment.MazeGame.abstractClasses.Room;
 import com.assignment.MazeGame.abstractClasses.Subject;
 import com.assignment.MazeGame.intefaces.GameMap;
@@ -26,12 +28,14 @@ import static com.assignment.MazeGame.utils.Constant.MAZE_GAME_LOGO;
 public class MazeGame extends Game {
     public MazeGame(UserInputProvider userInputProvider, OutputProvider outputProvider, UserDialogUtils userDialogUtils, PlayerDataStore playerDataStore, GameMap gameMap) {
         super(userInputProvider, outputProvider, userDialogUtils, playerDataStore, gameMap);
+
     }
 
     @Override
     public void start() {
         try {
             printGreatingsToUser();
+
             gameMap.initMap();
             String playerName = addNewPlayerToTheMaze();
             outputProvider.stringOutputToUser(playerName + ", are now entered the mysterious maze, use your objects around you wisely to finish the maze.... ");
@@ -93,6 +97,7 @@ public class MazeGame extends Game {
                     case "U":
                         useAvailableSubject(player);
                         break;
+
 
 
                     default:
@@ -214,7 +219,9 @@ public class MazeGame extends Game {
     private Direction getDirectionFromPlayer() throws EndingGameExecption, NoSuchDirectionException {
         String direction = userDialogUtils.userDialogWithInput(
                 "",
+
                 new ArrayList<String>(Arrays.asList("NORTH", "EAST", "SOUTH", "WEST")),
+
                 "Please enter a valid direction: NORTH, EAST, SOUTH, WEST. use CAPITAL LETTERS for the directions.",
                 userInputProvider);
         switch (direction) {

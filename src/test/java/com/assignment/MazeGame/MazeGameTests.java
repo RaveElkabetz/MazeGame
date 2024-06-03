@@ -1,8 +1,10 @@
 package com.assignment.MazeGame;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
+
 import com.assignment.MazeGame.datastores.HashMapMazeRoomDataStore;
 import com.assignment.MazeGame.intefaces.GameMap;
+
 import com.assignment.MazeGame.intefaces.PlayerDataStore;
 import com.assignment.MazeGame.intefaces.UI.UserDialog.UserDialogUtils;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
@@ -59,6 +61,8 @@ public class MazeGameTests {
 
     @Test
     public void testAddNewPlayerToTheMaze() throws EndingGameExecption {
+
+
         String nickname = "test_nickname";
         // setting the mocks
         when(userDialogUtils.userDialogWithInput(anyString(), anyString(), anyString(),any())).thenReturn(nickname);

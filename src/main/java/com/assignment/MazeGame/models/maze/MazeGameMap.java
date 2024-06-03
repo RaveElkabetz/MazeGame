@@ -82,6 +82,7 @@ public class MazeGameMap implements GameMap {
         }});
 
         mazeRoomDataStore.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(
+
                 Arrays.asList(new Bed(BED_DESCRIPTION, new Pin(PIN_DESCRIPTION)),
                         new Bars(BARS_DESCRIPTION, WEST))));
 
@@ -91,11 +92,14 @@ public class MazeGameMap implements GameMap {
         mazeRoomDataStore.get("F").setSubjectsInTheRoom(new ArrayList<Subject>(
                 List.of(new Bowl(BOWL_DESCRIPTION, new Bonzo(BONZO_DESCRIPTION, new SystemOutputProvider()))
 
+
                 )));
 
         mazeRoomDataStore.get("H").setSubjectsInTheRoom(new ArrayList<Subject>(
+
                 List.of(new Guard(GUARD_DESCRIPTION))
         ));
+
 
     }
 
