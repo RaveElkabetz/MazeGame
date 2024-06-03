@@ -2,14 +2,14 @@ package com.assignment.MazeGame.models.maze;
 
 import com.assignment.MazeGame.Exceptions.DoorUnPassableException;
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
+import com.assignment.MazeGame.abstractClasses.Room;
+import com.assignment.MazeGame.abstractClasses.Subject;
 import com.assignment.MazeGame.intefaces.Player;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.OutputProvider;
+import com.assignment.MazeGame.models.enums.Direction;
+import com.assignment.MazeGame.models.subjects.Bars;
 import com.assignment.MazeGame.models.subjects.Dog;
 import com.assignment.MazeGame.models.subjects.Guard;
-import com.assignment.MazeGame.models.enums.Direction;
-import com.assignment.MazeGame.abstractClasses.Room;
-import com.assignment.MazeGame.models.subjects.Bars;
-import com.assignment.MazeGame.abstractClasses.Subject;
 
 import java.util.ArrayList;
 
@@ -20,14 +20,13 @@ public class MazePlayer implements Player {
     private String nickname;
     private MazeRoom currentLocation;
     private ArrayList<Subject> inventory = new ArrayList<Subject>();
-    private OutputProvider outputProvider;
+    private final OutputProvider outputProvider;
 
     public MazePlayer(String nickname, MazeRoom startRoom, OutputProvider outputProvider) {
         this.nickname = nickname;
         this.currentLocation = startRoom;
         this.outputProvider = outputProvider;
     }
-
 
 
     @Override
@@ -66,7 +65,6 @@ public class MazePlayer implements Player {
         }
     }
 
-    //todo make this generic
     private void checkIfThereIsADogBlocking(Direction direction) throws DoorUnPassableException {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Dog) {
@@ -80,38 +78,10 @@ public class MazePlayer implements Player {
         for (Subject subject : currentLocation.getRoomSubjects()) {
             if (subject instanceof Bars) {
                 if (((Bars) subject).isBlocking() && ((Bars) subject).getWhichDirectionIsBlocked() == direction)
-                    throw new DoorUnPassableException("These Bars are locked, and it blocking the pass way!");
+                    throw new DoorUnPassableException("These Bars are locked, and it blocking the way!");
             }
         }
     }
-
-/*    private Optional<Bars> checkIfRoomHasBars(Direction direction) {
-       Optional<Bars> bars = Optional.empty();
-        for (Subject subject : currentLocation.getRoomSubjects()) {
-            if (subject instanceof Bars) {
-                if (*//*((Bars) subject).isOpen() &&*//* ((Bars) subject).getWhichDirectionIsBlocked() == direction)
-                    bars = Optional.of((Bars) subject);
-            }
-        }
-        return bars;
-    }*/
-
-/*    private boolean checkIfBarsAreOpen(Direction direction) {
-        for (Subject subject : currentLocation.getRoomSubjects()) {
-            if (subject instanceof Bars) {
-                //((Bars) subject).
-                if (!((Bars) subject).isBlocking() && ((Bars) subject).getWhichDirectionIsBlocked() == direction)
-                    return true;
-            }
-        }
-        return false;
-    }*/
-
-
-
-
-
-
 
 
     @Override

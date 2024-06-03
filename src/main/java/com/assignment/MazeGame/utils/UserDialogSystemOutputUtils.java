@@ -18,7 +18,7 @@ public class UserDialogSystemOutputUtils implements UserDialogUtils {
         }
         while (true) {
             userInput = userInputProvider.getStringInput();
-            if (!userInput.isEmpty() ) {
+            if (!userInput.isEmpty()) {
                 if (userInput.equalsIgnoreCase("EXIT")) {
                     throw new EndingGameExecption();
                 }
@@ -40,13 +40,13 @@ public class UserDialogSystemOutputUtils implements UserDialogUtils {
 
 
     @Override
-    public <T> String userDialogWithInput( ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
-        return userDialogWithInput("", goodInputsOptions,badInputResponse, "", userInputProvider);
+    public <T> String userDialogWithInput(ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
+        return userDialogWithInput("", goodInputsOptions, badInputResponse, "", userInputProvider);
     }
 
     @Override
     public <T> String userDialogWithInput(String qestion, ArrayList<T> goodInputsOptions, String badInputResponse, UserInputProvider userInputProvider) throws EndingGameExecption {
-        return userDialogWithInput(qestion, goodInputsOptions,badInputResponse, "", userInputProvider);
+        return userDialogWithInput(qestion, goodInputsOptions, badInputResponse, "", userInputProvider);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UserDialogSystemOutputUtils implements UserDialogUtils {
         while (true) {
             userInput = userInputProvider.getStringInput();
             if (!userInput.isEmpty()) {
-                System.out.println(goodInputResponse+userInput);
+                System.out.println(goodInputResponse + userInput);
                 break; // Exit the loop if the input is valid
             } else {
                 System.out.println(badInputResponse);

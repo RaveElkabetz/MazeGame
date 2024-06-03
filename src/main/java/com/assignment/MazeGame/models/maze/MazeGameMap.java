@@ -1,26 +1,25 @@
 package com.assignment.MazeGame.models.maze;
 
-import com.assignment.MazeGame.intefaces.GameMap;
-import com.assignment.MazeGame.intefaces.datastoreInterfaces.MazeRoomDataStore;
 import com.assignment.MazeGame.abstractClasses.Room;
 import com.assignment.MazeGame.abstractClasses.Subject;
-import com.assignment.MazeGame.models.subjects.Dog;
-import com.assignment.MazeGame.models.subjects.Guard;
-import com.assignment.MazeGame.models.enums.Direction;
+import com.assignment.MazeGame.intefaces.GameMap;
+import com.assignment.MazeGame.intefaces.datastoreInterfaces.MazeRoomDataStore;
 import com.assignment.MazeGame.models.Door;
+import com.assignment.MazeGame.models.enums.Direction;
 import com.assignment.MazeGame.models.subjects.*;
 import com.assignment.MazeGame.providers.SystemOutputProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.assignment.MazeGame.models.enums.Direction.*;
 import static com.assignment.MazeGame.utils.Constant.*;
 
 public class MazeGameMap implements GameMap {
 
-    
+
     private final MazeRoomDataStore mazeRoomDataStore;
 
     public MazeGameMap(MazeRoomDataStore mazeRoomDataStore) {
@@ -83,20 +82,20 @@ public class MazeGameMap implements GameMap {
         }});
 
         mazeRoomDataStore.get("A").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Bed(BED_DESCRIPTION,new Pin(PIN_DESCRIPTION)),
-                              new Bars(BARS_DESCRIPTION,WEST))));
+                Arrays.asList(new Bed(BED_DESCRIPTION, new Pin(PIN_DESCRIPTION)),
+                        new Bars(BARS_DESCRIPTION, WEST))));
 
         mazeRoomDataStore.get("G").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Dog(DOG_DESCRIPTION,NORTH))));
+                List.of(new Dog(DOG_DESCRIPTION, NORTH))));
 
         mazeRoomDataStore.get("F").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Bowl(BOWL_DESCRIPTION, new Bonzo(BONZO_DESCRIPTION, new SystemOutputProvider()) )
+                List.of(new Bowl(BOWL_DESCRIPTION, new Bonzo(BONZO_DESCRIPTION, new SystemOutputProvider()))
 
                 )));
 
         mazeRoomDataStore.get("H").setSubjectsInTheRoom(new ArrayList<Subject>(
-                Arrays.asList(new Guard(GUARD_DESCRIPTION))
-                ));
+                List.of(new Guard(GUARD_DESCRIPTION))
+        ));
 
     }
 

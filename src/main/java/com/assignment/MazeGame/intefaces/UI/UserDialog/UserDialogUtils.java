@@ -1,7 +1,6 @@
 package com.assignment.MazeGame.intefaces.UI.UserDialog;
 
 import com.assignment.MazeGame.Exceptions.EndingGameExecption;
-import com.assignment.MazeGame.Exceptions.GoBackException;
 import com.assignment.MazeGame.intefaces.UI.providerInterfaces.UserInputProvider;
 
 import java.util.ArrayList;
